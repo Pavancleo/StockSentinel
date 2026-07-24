@@ -1,0 +1,6 @@
+{
+  "name": "StockSentinel",
+  "description": "AI Market Threat Detection & Earnings Intelligence Platform combining live market indicators, advanced social sentiment analysis, dynamic stock predictions, and automated earnings transcripts with a futuristic Bloomberg Terminal-inspired dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
