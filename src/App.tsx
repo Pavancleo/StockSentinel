@@ -122,11 +122,15 @@ export default function App() {
       <div id="landing-page" className="relative min-h-screen bg-brand-deep text-slate-100 flex flex-col justify-between overflow-hidden font-sans">
         {/* Animated matrix grid background overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/4 -translate-y-1/2 w-[350px] h-[350px] bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none" />
+        {/* Moving organic liquid background blobs */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-[10%] left-[10%] w-[35vw] h-[35vw] rounded-full bg-indigo-500/10 blur-[130px] animate-blob" />
+          <div className="absolute bottom-[15%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/10 blur-[120px] animate-blob animation-delay-2000" />
+          <div className="absolute top-[60%] left-[-5%] w-[30vw] h-[30vw] rounded-full bg-pink-500/8 blur-[110px] animate-blob animation-delay-4000" />
+        </div>
 
         {/* Top bar header */}
-        <header className="relative w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10 border-b border-brand-border bg-brand-deep/30 backdrop-blur-md">
+        <header className="relative w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10 border-b border-brand-border bg-brand-deep/20 backdrop-blur-xl">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-500/5 border border-purple-500/30 flex items-center justify-center shadow-lg shadow-purple-500/5">
               <ShieldAlert className="w-5 h-5 text-purple-400" />
@@ -227,9 +231,16 @@ export default function App() {
 
   // Core Dashboard shell rendering
   return (
-    <div id="dashboard-shell" className="min-h-screen bg-brand-deep text-slate-200 flex flex-col font-sans selection:bg-cyan-500/20">
+    <div id="dashboard-shell" className="relative min-h-screen bg-brand-deep text-slate-200 flex flex-col font-sans selection:bg-cyan-500/20 overflow-hidden">
+      {/* Moving organic liquid background blobs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[10%] left-[10%] w-[35vw] h-[35vw] rounded-full bg-indigo-500/10 blur-[130px] animate-blob" />
+        <div className="absolute bottom-[15%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/10 blur-[120px] animate-blob animation-delay-2000" />
+        <div className="absolute top-[60%] left-[-5%] w-[30vw] h-[30vw] rounded-full bg-pink-500/8 blur-[110px] animate-blob animation-delay-4000" />
+      </div>
+
       {/* Platform Navigation Header */}
-      <header className="bg-brand-deep/90 backdrop-blur-md border-b border-brand-border sticky top-0 z-40">
+      <header className="relative bg-brand-deep/55 backdrop-blur-xl border-b border-brand-border sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3 cursor-pointer select-none" onClick={() => setIsLaunched(false)}>
             <div className="w-9 h-9 rounded-xl bg-purple-500/5 border border-purple-500/30 flex items-center justify-center shadow-lg shadow-purple-500/5">
