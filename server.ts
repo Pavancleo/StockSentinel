@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
+import { spawn } from "child_process";
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
@@ -379,9 +379,9 @@ app.get('/api/sentiment/:symbol', (req, res) => {
 
   const moodGauge =
     rawSentiment > 60 ? 'EUPHORIC' :
-    rawSentiment > 15 ? 'BULLISH' :
-    rawSentiment > -15 ? 'STABLE' :
-    rawSentiment > -60 ? 'FEARFUL' : 'PANIC';
+      rawSentiment > 15 ? 'BULLISH' :
+        rawSentiment > -15 ? 'STABLE' :
+          rawSentiment > -60 ? 'FEARFUL' : 'PANIC';
 
   res.json({
     symbol,
@@ -894,8 +894,8 @@ app.post('/api/risk-engine', (req, res) => {
 
   const recommendedAction =
     finalRisk < 30 ? 'AGGRESSIVE ACCUMULATE' :
-    finalRisk < 50 ? 'HOLD / SECTOR RE-BALANCING' :
-    finalRisk < 75 ? 'DECREASE EXPOSURE / PARKING IN BONDs' : 'LIQUIDATE POSITION';
+      finalRisk < 50 ? 'HOLD / SECTOR RE-BALANCING' :
+        finalRisk < 75 ? 'DECREASE EXPOSURE / PARKING IN BONDs' : 'LIQUIDATE POSITION';
 
   res.json({
     symbol: symbolUpper,
@@ -941,23 +941,23 @@ Do NOT give regulatory-binding professional financial advice, but offer advanced
     );
 
     const reply = response.text || "I apologize, I am processing high volumes of market indicators. Please try querying this symbol again.";
-    
+
     // Extract search grounding metadata sources
     const groundingChunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks;
     const sources = groundingChunks
       ? groundingChunks
-          .map((chunk) => {
-            if (chunk.web) {
-              return {
-                title: chunk.web.title || 'Source',
-                url: chunk.web.uri || '#'
-              };
-            }
-            return null;
-          })
-          .filter((s): s is { title: string; url: string } => s !== null)
-          // Deduplicate
-          .filter((v, i, self) => self.findIndex((t) => t.url === v.url) === i)
+        .map((chunk) => {
+          if (chunk.web) {
+            return {
+              title: chunk.web.title || 'Source',
+              url: chunk.web.uri || '#'
+            };
+          }
+          return null;
+        })
+        .filter((s): s is { title: string; url: string } => s !== null)
+        // Deduplicate
+        .filter((v, i, self) => self.findIndex((t) => t.url === v.url) === i)
       : [];
 
     res.json({
@@ -1004,7 +1004,45 @@ async function initializeServer() {
     console.log(`StockSentinel server active on port ${PORT}`);
   });
 }
+app.get("/api/live-stock/:symbol", (req, res) => {
 
+  const symbol = req.params.symbol;
+
+  const python = spawn("python", [
+    "stock_service.py",
+    symbol
+  ]);
+
+  let data = "";
+
+  python.stdout.on("data", (chunk) => {
+    data += chunk.toString();
+  });
+
+  python.stderr.on("data", (err) => {
+    console.error(err.toString());
+  });
+
+  python.on("close", () => {
+
+    try {
+
+      const result = JSON.parse(data);
+
+      res.json(result);
+
+    } catch (error) {
+
+      res.status(500).json({
+        success: false,
+        message: "Python returned invalid data"
+      });
+
+    }
+
+  });
+
+});
 initializeServer().catch((err) => {
   console.error('Server initialization failed:', err);
 });
