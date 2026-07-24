@@ -67,147 +67,147 @@ interface StockState {
 
 let STOCKS: StockState[] = [
   {
-    symbol: 'AAPL',
-    name: 'Apple Inc.',
-    price: 182.52,
-    change: 1.42,
-    changePercent: 0.78,
-    volume: 52400000,
-    high: 183.10,
-    low: 180.88,
-    open: 181.10,
-    marketCap: '2.85T',
-    sector: 'Technology',
+    symbol: 'INFY',
+    name: 'Infosys Ltd.',
+    price: 1850.40,
+    change: 22.50,
+    changePercent: 1.23,
+    volume: 8450000,
+    high: 1865.00,
+    low: 1835.10,
+    open: 1838.00,
+    marketCap: '₹7.70L Cr',
+    sector: 'IT Services',
     history: Array.from({ length: 30 }, (_, i) => ({
       time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 175 + Math.random() * 8,
-      volume: 1000000 + Math.floor(Math.random() * 2000000)
+      price: 1830 + Math.random() * 30,
+      volume: 200000 + Math.floor(Math.random() * 400000)
     }))
   },
   {
-    symbol: 'TSLA',
-    name: 'Tesla Inc.',
-    price: 178.44,
-    change: -5.20,
-    changePercent: -2.83,
-    volume: 94100000,
-    high: 184.60,
-    low: 177.02,
-    open: 183.50,
-    marketCap: '568B',
-    sector: 'Consumer Cyclical',
+    symbol: 'TCS',
+    name: 'Tata Consultancy Services',
+    price: 3920.80,
+    change: -18.20,
+    changePercent: -0.46,
+    volume: 3210000,
+    high: 3955.00,
+    low: 3908.00,
+    open: 3940.00,
+    marketCap: '₹14.2L Cr',
+    sector: 'IT Services',
     history: Array.from({ length: 30 }, (_, i) => ({
       time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 170 + Math.random() * 15,
-      volume: 2000000 + Math.floor(Math.random() * 3000000)
+      price: 3900 + Math.random() * 45,
+      volume: 100000 + Math.floor(Math.random() * 250000)
     }))
   },
   {
-    symbol: 'NVDA',
-    name: 'NVIDIA Corp.',
-    price: 875.12,
-    change: 18.34,
-    changePercent: 2.14,
-    volume: 68300000,
-    high: 882.40,
-    low: 852.10,
-    open: 855.20,
-    marketCap: '2.19T',
-    sector: 'Technology',
+    symbol: 'RELIANCE',
+    name: 'Reliance Industries Ltd.',
+    price: 2985.50,
+    change: 34.10,
+    changePercent: 1.16,
+    volume: 12400000,
+    high: 2998.00,
+    low: 2958.00,
+    open: 2960.00,
+    marketCap: '₹20.2L Cr',
+    sector: 'Energy & Conglomerate',
     history: Array.from({ length: 30 }, (_, i) => ({
       time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 850 + Math.random() * 35,
-      volume: 1500000 + Math.floor(Math.random() * 2500000)
+      price: 2950 + Math.random() * 40,
+      volume: 300000 + Math.floor(Math.random() * 500000)
     }))
   },
   {
-    symbol: 'MSFT',
-    name: 'Microsoft Corp.',
-    price: 416.42,
-    change: 3.12,
-    changePercent: 0.75,
-    volume: 22800000,
-    high: 418.20,
-    low: 412.50,
-    open: 413.20,
-    marketCap: '3.09T',
-    sector: 'Technology',
-    history: Array.from({ length: 30 }, (_, i) => ({
-      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 410 + Math.random() * 10,
-      volume: 500000 + Math.floor(Math.random() * 1000000)
-    }))
-  },
-  {
-    symbol: 'BTC',
-    name: 'Bitcoin',
-    price: 64250.40,
-    change: -1120.20,
-    changePercent: -1.71,
-    volume: 34500000000,
-    high: 65800.00,
-    low: 63900.00,
-    open: 65370.00,
-    marketCap: '1.26T',
-    sector: 'Crypto',
-    history: Array.from({ length: 30 }, (_, i) => ({
-      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 63000 + Math.random() * 2800,
-      volume: 100000000 + Math.floor(Math.random() * 500000000)
-    }))
-  },
-  {
-    symbol: 'ETH',
-    name: 'Ethereum',
-    price: 3450.15,
-    change: 45.30,
-    changePercent: 1.33,
-    volume: 18200000000,
-    high: 3480.00,
-    low: 3390.00,
-    open: 3404.00,
-    marketCap: '414B',
-    sector: 'Crypto',
-    history: Array.from({ length: 30 }, (_, i) => ({
-      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 3350 + Math.random() * 140,
-      volume: 50000000 + Math.floor(Math.random() * 200000000)
-    }))
-  },
-  {
-    symbol: 'AMZN',
-    name: 'Amazon.com Inc.',
-    price: 178.15,
-    change: -0.45,
-    changePercent: -0.25,
-    volume: 31200000,
-    high: 179.43,
-    low: 176.80,
-    open: 178.30,
-    marketCap: '1.85T',
-    sector: 'Consumer Cyclical',
-    history: Array.from({ length: 30 }, (_, i) => ({
-      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 172 + Math.random() * 7,
-      volume: 800000 + Math.floor(Math.random() * 1200000)
-    }))
-  },
-  {
-    symbol: 'COIN',
-    name: 'Coinbase Global',
-    price: 242.10,
+    symbol: 'HDFCBANK',
+    name: 'HDFC Bank Ltd.',
+    price: 1642.30,
     change: 14.80,
-    changePercent: 6.51,
-    volume: 15400000,
-    high: 245.00,
-    low: 226.10,
-    open: 227.30,
-    marketCap: '58.2B',
+    changePercent: 0.91,
+    volume: 18900000,
+    high: 1650.00,
+    low: 1628.00,
+    open: 1630.00,
+    marketCap: '₹12.5L Cr',
     sector: 'Financial Services',
     history: Array.from({ length: 30 }, (_, i) => ({
       time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
-      price: 220 + Math.random() * 25,
-      volume: 300000 + Math.floor(Math.random() * 700000)
+      price: 1625 + Math.random() * 25,
+      volume: 400000 + Math.floor(Math.random() * 600000)
+    }))
+  },
+  {
+    symbol: 'TATAMOTORS',
+    name: 'Tata Motors Ltd.',
+    price: 985.60,
+    change: 18.40,
+    changePercent: 1.90,
+    volume: 15200000,
+    high: 992.00,
+    low: 968.00,
+    open: 970.00,
+    marketCap: '₹3.26L Cr',
+    sector: 'Automobile',
+    history: Array.from({ length: 30 }, (_, i) => ({
+      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
+      price: 965 + Math.random() * 25,
+      volume: 350000 + Math.floor(Math.random() * 500000)
+    }))
+  },
+  {
+    symbol: 'ICICIBANK',
+    name: 'ICICI Bank Ltd.',
+    price: 1224.75,
+    change: -8.15,
+    changePercent: -0.66,
+    volume: 11400000,
+    high: 1238.00,
+    low: 1218.00,
+    open: 1232.00,
+    marketCap: '₹8.60L Cr',
+    sector: 'Financial Services',
+    history: Array.from({ length: 30 }, (_, i) => ({
+      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
+      price: 1215 + Math.random() * 20,
+      volume: 250000 + Math.floor(Math.random() * 400000)
+    }))
+  },
+  {
+    symbol: 'WIPRO',
+    name: 'Wipro Ltd.',
+    price: 512.30,
+    change: 6.40,
+    changePercent: 1.27,
+    volume: 9800000,
+    high: 518.00,
+    low: 506.00,
+    open: 507.00,
+    marketCap: '₹2.68L Cr',
+    sector: 'IT Services',
+    history: Array.from({ length: 30 }, (_, i) => ({
+      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
+      price: 505 + Math.random() * 12,
+      volume: 200000 + Math.floor(Math.random() * 300000)
+    }))
+  },
+  {
+    symbol: 'BHARTIARTL',
+    name: 'Bharti Airtel Ltd.',
+    price: 1435.10,
+    change: 12.20,
+    changePercent: 0.86,
+    volume: 7600000,
+    high: 1445.00,
+    low: 1422.00,
+    open: 1425.00,
+    marketCap: '₹8.15L Cr',
+    sector: 'Telecommunications',
+    history: Array.from({ length: 30 }, (_, i) => ({
+      time: `${10 + Math.floor(i / 6)}:${(i % 6) * 10}`,
+      price: 1420 + Math.random() * 20,
+      volume: 180000 + Math.floor(Math.random() * 300000)
     }))
   }
 ];
@@ -215,14 +215,12 @@ let STOCKS: StockState[] = [
 // Market Indices
 let INDICES = [
   { name: 'NIFTY 50', value: 24150.25, change: 112.45, changePercent: 0.47 },
-  { name: 'BANK NIFTY', value: 52120.80, change: -234.10, changePercent: -0.45 },
   { name: 'SENSEX', value: 79240.50, change: 350.30, changePercent: 0.44 },
-  { name: 'NASDAQ', value: 16170.10, change: 155.40, changePercent: 0.97 },
-  { name: 'S&P 500', value: 5120.45, change: 24.30, changePercent: 0.48 },
-  { name: 'DOW JONES', value: 39050.20, change: 75.10, changePercent: 0.19 },
-  { name: 'GOLD (oz)', value: 2410.80, change: 18.50, changePercent: 0.77 },
-  { name: 'SILVER (oz)', value: 29.45, change: 0.55, changePercent: 1.90 },
-  { name: 'BRENT CRUDE', value: 84.12, change: -1.18, changePercent: -1.38 }
+  { name: 'BANK NIFTY', value: 52120.80, change: -234.10, changePercent: -0.45 },
+  { name: 'NIFTY IT', value: 38420.10, change: 285.60, changePercent: 0.75 },
+  { name: 'NIFTY MIDCAP 100', value: 56120.40, change: 195.20, changePercent: 0.35 },
+  { name: 'BSE SMALLCAP', value: 52410.15, change: 142.80, changePercent: 0.27 },
+  { name: 'NIFTY AUTO', value: 25180.90, change: 310.40, changePercent: 1.25 }
 ];
 
 // Update simulation state periodically
@@ -272,67 +270,67 @@ setInterval(() => {
   });
 }, 3000);
 
-// Global News List
+// Indian Market News List
 const NEWS_ARTICLES = [
   {
     id: 'news-1',
-    headline: 'NVIDIA CEO Unveils Rubin Architecture, Boosting Core AI Computing Capabilities Globally',
-    source: 'Bloomberg Technology',
+    headline: 'Infosys Secures Major $1.5B Enterprise AI Transformation Deal with European Banking Group',
+    source: 'Economic Times',
     time: '5 mins ago',
-    summary: 'At a keynote speech in Taipei, NVIDIA CEO Jensen Huang announced the Rubin GPU architecture, slated for late 2026, featuring HBM4 memory chips and promising extreme performance gains for large language model operations.',
+    summary: 'Infosys announced a multi-year deal expansion integrating generative AI automation and cloud infrastructure across 14 operating markets, boosting tech sector sentiment on NSE.',
     sentiment: 'POSITIVE' as const,
     impactScore: 88,
-    companiesMentioned: ['NVDA', 'TSMC'],
-    sector: 'Technology',
-    aiRecommendation: 'STRONG ACCUMULATION: Rubin advances NVDA\'s moat, increasing hardware pricing power across datacenter segments.'
+    companiesMentioned: ['INFY', 'TCS'],
+    sector: 'IT Services',
+    aiRecommendation: 'STRONG ACCUMULATION: INFY expands high-margin AI delivery pipelines across European banking clients.'
   },
   {
     id: 'news-2',
-    headline: 'Crypto Markets Shaken as Flash Liquidations Clear $450M in Leveraged Longs',
-    source: 'Coindesk',
+    headline: 'RBI Maintains Repo Rate at 6.50% Citing Resilient Indian Economy and Moderating Inflation Trajectory',
+    source: 'LiveMint',
     time: '20 mins ago',
-    summary: 'A sudden wave of automated sales hit cryptocurrency exchanges, dragging Bitcoin down over $1,500 in under ten minutes. Liquidation engines on leading derivatives platforms automatically unloaded leveraged long positions, exacerbating the slide.',
-    sentiment: 'NEGATIVE' as const,
-    impactScore: 75,
-    companiesMentioned: ['BTC', 'COIN'],
-    sector: 'Crypto',
-    aiRecommendation: 'EXERCISE CAUTION: Elevated volatility signals high leverage wash-out. Accumulate spot near major daily support zones.'
+    summary: 'The Monetary Policy Committee of RBI unanimously voted to keep repo rates unchanged at 6.50%. Governor noted robust domestic consumption and strong credit growth across banking sectors.',
+    sentiment: 'POSITIVE' as const,
+    impactScore: 82,
+    companiesMentioned: ['HDFCBANK', 'ICICIBANK'],
+    sector: 'Financial Services',
+    aiRecommendation: 'BULLISH FOR BANKING: Rate stability sustains net interest margins for tier-1 Indian private banks.'
   },
   {
     id: 'news-3',
-    headline: 'Federal Reserve Signals Interest Rates Will Remain Unchanged Citing Cautious Wage Inflation Trajectory',
-    source: 'Wall Street Journal',
+    headline: 'Reliance Industries Commissioning ₹75,000 Cr Green Hydrogen & Solar Clean Energy Giga-Complex in Gujarat',
+    source: 'Business Standard',
     time: '45 mins ago',
-    summary: 'Federal Reserve officials signaled they are in no rush to ease monetary policy, asserting that while inflation is moderating, robust employment demand indicates rates must stay restrictive longer to prevent resurgent price hikes.',
-    sentiment: 'NEUTRAL' as const,
-    impactScore: 64,
-    companiesMentioned: ['SPY', 'QQQ'],
-    sector: 'Macroeconomics',
-    aiRecommendation: 'MONITOR TECHNICALS: High interest rates pressure interest-sensitive sectors like regional banking and real estate.'
+    summary: 'Reliance Industries Chairman Mukesh Ambani announced phased operations beginning at the Jamnagar Giga Factory complex, accelerating energy transition goals and boosting long-term capex visibility.',
+    sentiment: 'POSITIVE' as const,
+    impactScore: 85,
+    companiesMentioned: ['RELIANCE'],
+    sector: 'Energy & Conglomerate',
+    aiRecommendation: 'LONG TERM ACCUMULATION: Green energy pivot enhances ESG capital inflows and long-term valuation multiples.'
   },
   {
     id: 'news-4',
-    headline: 'Tesla Shareholders Vote in Favor of Elon Musk\'s Historic Compensation Package in Resounding Approval',
-    source: 'Reuters',
+    headline: 'Tata Motors Reports Record Electric Vehicle Sales; EV Passenger Segment Grows 28% YoY',
+    source: 'Financial Express',
     time: '1 hour ago',
-    summary: 'Tesla Inc. announced that stockholders voted overwhelmingly to ratify CEO Elon Musk\'s multi-billion dollar performance compensation package, demonstrating strong retail and institutional backing despite heavy pushback from proxy advisors.',
+    summary: 'Tata Motors posted record monthly dispatches led by Punch EV and Nexon EV demand, expanding its market leadership in India\'s passenger electric vehicle market.',
     sentiment: 'POSITIVE' as const,
-    impactScore: 82,
-    companiesMentioned: ['TSLA'],
-    sector: 'Consumer Cyclical',
-    aiRecommendation: 'POSITIVE MOVEMENT EXPECTED: Resolves key executive retention and governance risks. Bullish key pivot support at $170.'
+    impactScore: 79,
+    companiesMentioned: ['TATAMOTORS'],
+    sector: 'Automobile',
+    aiRecommendation: 'POSITIVE OUTLOOK: Dominant EV market share buffers against domestic commercial vehicle cyclicality.'
   },
   {
     id: 'news-5',
-    headline: 'SEC Investigate Sudden Spike in Micro-cap Spac Merger Volume on Suspected Spoofing and Retail Pump Collusion',
-    source: 'Financial Times',
+    headline: 'SEBI Issues Tightened Surveillance Norms for Algorithmic Micro-Cap Trades to Prevent Order Spoofing',
+    source: 'CNBC-TV18',
     time: '2 hours ago',
-    summary: 'Regulators have opened a probe looking into rapid trading patterns and coordinated social media posts surrounding sudden acquisitions. Analysis suggests flash trading scripts spoofed heavy buy orders to draw retail momentum.',
-    sentiment: 'NEGATIVE' as const,
-    impactScore: 78,
-    companiesMentioned: ['SEC', 'SPAC'],
-    sector: 'Financial Services',
-    aiRecommendation: 'AVOID SPECULATION: Heightened regulatory scrutiny in pump-and-dump sectors can prompt instant liquidity freezes.'
+    summary: 'Market regulator SEBI introduced real-time order-to-trade ratio monitoring for high-frequency trading desks to curtail artificial liquidity volume spikes on NSE and BSE small-cap stocks.',
+    sentiment: 'NEUTRAL' as const,
+    impactScore: 74,
+    companiesMentioned: ['NSE', 'BSE'],
+    sector: 'Market Regulation',
+    aiRecommendation: 'HEALTHY MARKET AUDIT: Reduces spoofing risk and enhances retail investor confidence across Indian exchanges.'
   }
 ];
 

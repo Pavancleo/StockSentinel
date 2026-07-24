@@ -10,60 +10,60 @@ import { motion } from 'motion/react';
 
 const PORTFOLIO_ASSETS: PortfolioStock[] = [
   {
-    symbol: 'NVDA',
-    name: 'NVIDIA Corporation',
-    shares: 40,
-    averageBuyPrice: 780.00,
-    currentPrice: 875.12,
-    investedValue: 31200,
-    currentValue: 35004.8,
-    profitLoss: 3804.8,
-    profitLossPercent: 12.2,
-    allocationPercent: 38.6,
-    healthScore: 84,
-    recommendation: 'HOLD: Overweight but solid Rubin architecture backlog provides intermediate safety margins.'
-  },
-  {
-    symbol: 'AAPL',
-    name: 'Apple Inc.',
-    shares: 80,
-    averageBuyPrice: 172.50,
-    currentPrice: 182.52,
-    investedValue: 13800,
-    currentValue: 14601.6,
-    profitLoss: 801.6,
-    profitLossPercent: 5.81,
-    allocationPercent: 16.1,
+    symbol: 'INFY',
+    name: 'Infosys Ltd.',
+    shares: 150,
+    averageBuyPrice: 1720.00,
+    currentPrice: 1850.40,
+    investedValue: 258000,
+    currentValue: 277560,
+    profitLoss: 19560,
+    profitLossPercent: 7.58,
+    allocationPercent: 28.5,
     healthScore: 92,
-    recommendation: 'ACCUMULATE: Digital service subscriptions are resilient. Favorable entry barrier near support thresholds.'
+    recommendation: 'ACCUMULATE: Strong enterprise AI deal momentum and steady operating margins.'
   },
   {
-    symbol: 'BTC',
-    name: 'Bitcoin (Spot)',
-    shares: 0.45,
-    averageBuyPrice: 58500.00,
-    currentPrice: 64250.40,
-    investedValue: 26325,
-    currentValue: 28912.68,
-    profitLoss: 2587.68,
-    profitLossPercent: 9.83,
-    allocationPercent: 31.9,
-    healthScore: 68,
-    recommendation: 'TRIM: Higher interest rate expectations trigger intermediate volatility across risk assets.'
-  },
-  {
-    symbol: 'COIN',
-    name: 'Coinbase Global',
+    symbol: 'TCS',
+    name: 'Tata Consultancy Services',
     shares: 50,
-    averageBuyPrice: 205.10,
-    currentPrice: 242.10,
-    investedValue: 10255,
-    currentValue: 12105,
-    profitLoss: 1850,
-    profitLossPercent: 18.04,
-    allocationPercent: 13.4,
-    healthScore: 74,
-    recommendation: 'HOLD: Solid trading volume spikes, but closely tied to core crypto-volatility indices.'
+    averageBuyPrice: 3820.00,
+    currentPrice: 3920.80,
+    investedValue: 191000,
+    currentValue: 196040,
+    profitLoss: 5040,
+    profitLossPercent: 2.64,
+    allocationPercent: 20.1,
+    healthScore: 89,
+    recommendation: 'HOLD: Tier-1 IT market leadership with consistent order book execution.'
+  },
+  {
+    symbol: 'RELIANCE',
+    name: 'Reliance Industries Ltd.',
+    shares: 100,
+    averageBuyPrice: 2880.00,
+    currentPrice: 2985.50,
+    investedValue: 288000,
+    currentValue: 298550,
+    profitLoss: 10550,
+    profitLossPercent: 3.66,
+    allocationPercent: 30.7,
+    healthScore: 94,
+    recommendation: 'STRONG BUY: Green hydrogen expansion and telecom Jio ARPU growth.'
+  },
+  {
+    symbol: 'HDFCBANK',
+    name: 'HDFC Bank Ltd.',
+    shares: 120,
+    averageBuyPrice: 1580.00,
+    currentPrice: 1642.30,
+    investedValue: 189600,
+    currentValue: 197076,
+    profitLoss: 7476,
+    profitLossPercent: 3.94,
+    allocationPercent: 20.2,
+    healthScore: 88,
+    recommendation: 'ACCUMULATE: Core credit growth and deposit accretion remain healthy.'
   }
 ];
 
@@ -85,14 +85,14 @@ export default function PortfolioTracker() {
             <Briefcase className="w-3.5 h-3.5 text-cyan-400" />
             <span>PORTFOLIO BALANCE</span>
           </div>
-          <div className="text-xl font-bold text-slate-100">${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
-          <div className="text-[9px] text-slate-500 tracking-wide">BASE METRIC: USD INDEXED</div>
+          <div className="text-xl font-bold text-slate-100">₹{totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+          <div className="text-[9px] text-slate-500 tracking-wide">BASE METRIC: INR INDEXED</div>
         </div>
 
         {/* Invested Cost */}
         <div className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-5 rounded-2xl shadow-xl space-y-2 font-mono">
           <div className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">ACQUISITION COST</div>
-          <div className="text-xl font-bold text-slate-100">${totalCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+          <div className="text-xl font-bold text-slate-100">₹{totalCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
           <div className="text-[9px] text-slate-500 tracking-wide">SECURE CASH RESERVES DEPLOYED</div>
         </div>
 
@@ -101,7 +101,7 @@ export default function PortfolioTracker() {
           <div className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">UNREALIZED NET RETURNS</div>
           <div className="text-xl font-bold text-emerald-400 flex items-center gap-1">
             <ArrowUpRight className="w-4 h-4" />
-            <span>${totalPL.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+            <span>₹{totalPL.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
           </div>
           <div className="text-[9px] text-emerald-500 font-bold tracking-wide">+{totalPLPercent.toFixed(2)}% ALL-TIME YIELD</div>
         </div>

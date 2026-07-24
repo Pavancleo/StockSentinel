@@ -12,9 +12,9 @@ const INITIAL_ALERTS: AlertNotification[] = [
   {
     id: 'alt-1',
     type: 'PUMP_DUMP',
-    title: 'POSSIBLE PUMP-AND-DUMP DETECTED',
-    message: 'Abnormal social media posting frequency coupled with circular block buying orders detected in micro-cap SPAC pools.',
-    symbol: 'SPAC',
+    title: 'SEBI SURVEILLANCE SPOOFING DETECTED',
+    message: 'Abnormal high-frequency order cancellation patterns flagged on NSE derivative contracts near key strike levels.',
+    symbol: 'NSE',
     severity: 'CRITICAL',
     time: '2 mins ago',
     unread: true
@@ -22,9 +22,9 @@ const INITIAL_ALERTS: AlertNotification[] = [
   {
     id: 'alt-2',
     type: 'PRICE_CRASH',
-    title: 'BITCOIN LIQUIDATION CASCADE',
-    message: 'Leveraged derivatives trading blocks wiped out $450M, dragging spot rates down 1.7% in under ten minutes.',
-    symbol: 'BTC',
+    title: 'INFOSYS VOLUME SURGE DETECTED',
+    message: 'Institutional block trade of 1.2M shares executed at ₹1,850.40, accelerating tech sector momentum on NIFTY IT.',
+    symbol: 'INFY',
     severity: 'HIGH',
     time: '18 mins ago',
     unread: true
@@ -32,9 +32,9 @@ const INITIAL_ALERTS: AlertNotification[] = [
   {
     id: 'alt-3',
     type: 'MANIPULATION',
-    title: 'ORDER BOOK SPOOFING DETECTED',
-    message: 'High-frequency algorithms placing and cancelling substantial block supports near current apple bids.',
-    symbol: 'AAPL',
+    title: 'RELIANCE CLEAN ENERGY DEAL ANNOUNCEMENT',
+    message: 'RIL announces ₹75,000 Cr green hydrogen manufacturing complex commissioning in Jamnagar, Gujarat.',
+    symbol: 'RELIANCE',
     severity: 'WARNING',
     time: '1 hour ago',
     unread: false
@@ -43,8 +43,8 @@ const INITIAL_ALERTS: AlertNotification[] = [
     id: 'alt-4',
     type: 'PORTFOLIO_RISK',
     title: 'HIGH POSITION CONCENTRATION',
-    message: 'NVIDIA holdings exceed 38.6% of total investment values. Exposure margins have crossed the baseline limit.',
-    symbol: 'NVDA',
+    message: 'Reliance holdings exceed 30.7% of total portfolio value. Sector concentration limits reached.',
+    symbol: 'RELIANCE',
     severity: 'WARNING',
     time: '2 hours ago',
     unread: false

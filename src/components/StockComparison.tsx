@@ -8,18 +8,19 @@ import { ArrowLeftRight, Check, AlertTriangle, TrendingUp, Sparkles, HelpCircle 
 import { motion } from 'motion/react';
 
 const ASSETS = [
-  { symbol: 'AAPL', name: 'Apple Inc.', price: 182.52, sector: 'Technology' },
-  { symbol: 'TSLA', name: 'Tesla Inc.', price: 178.44, sector: 'Consumer Cyclical' },
-  { symbol: 'NVDA', name: 'NVIDIA Corp.', price: 875.12, sector: 'Technology' },
-  { symbol: 'MSFT', name: 'Microsoft Corp.', price: 416.42, sector: 'Technology' },
-  { symbol: 'BTC', name: 'Bitcoin', price: 64250.40, sector: 'Crypto' },
-  { symbol: 'ETH', name: 'Ethereum', price: 3450.15, sector: 'Crypto' },
-  { symbol: 'COIN', name: 'Coinbase Global', price: 245.80, sector: 'Financial Services' }
+  { symbol: 'INFY', name: 'Infosys Ltd.', price: 1850.40, sector: 'IT Services' },
+  { symbol: 'TCS', name: 'Tata Consultancy Services', price: 3920.80, sector: 'IT Services' },
+  { symbol: 'RELIANCE', name: 'Reliance Industries Ltd.', price: 2985.50, sector: 'Energy & Conglomerate' },
+  { symbol: 'HDFCBANK', name: 'HDFC Bank Ltd.', price: 1642.30, sector: 'Financial Services' },
+  { symbol: 'TATAMOTORS', name: 'Tata Motors Ltd.', price: 985.60, sector: 'Automobile' },
+  { symbol: 'ICICIBANK', name: 'ICICI Bank Ltd.', price: 1224.75, sector: 'Financial Services' },
+  { symbol: 'WIPRO', name: 'Wipro Ltd.', price: 512.30, sector: 'IT Services' },
+  { symbol: 'BHARTIARTL', name: 'Bharti Airtel Ltd.', price: 1435.10, sector: 'Telecommunications' }
 ];
 
 export default function StockComparison() {
-  const [stockA, setStockA] = useState('AAPL');
-  const [stockB, setStockB] = useState('MSFT');
+  const [stockA, setStockA] = useState('INFY');
+  const [stockB, setStockB] = useState('TCS');
   const [loading, setLoading] = useState(false);
   const [compareData, setCompareData] = useState<any>(null);
 

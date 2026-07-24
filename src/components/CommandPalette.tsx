@@ -131,23 +131,34 @@ export default function CommandPalette({ onSelectTab, onScanStock }: CommandPale
     },
     // Stock instant queries
     {
-      id: 'scan-nvda',
+      id: 'scan-infy',
       category: 'INSTANT SCAN',
-      command: 'AUDIT NVIDIA CORP. (NVDA) RISK PROFILE',
-      icon: <Shield className="w-3.5 h-3.5 text-red-400 animate-pulse" />,
+      command: 'AUDIT INFOSYS LTD. (INFY) RISK PROFILE',
+      icon: <Shield className="w-3.5 h-3.5 text-purple-400 animate-pulse" />,
       action: () => {
-        onScanStock('NVDA');
+        onScanStock('INFY');
         onSelectTab('threats');
         setOpen(false);
       }
     },
     {
-      id: 'scan-btc',
+      id: 'scan-tcs',
       category: 'INSTANT SCAN',
-      command: 'AUDIT BITCOIN (BTC) THREAT DATA',
-      icon: <Shield className="w-3.5 h-3.5 text-red-400 animate-pulse" />,
+      command: 'AUDIT TATA CONSULTANCY SERVICES (TCS) RISK PROFILE',
+      icon: <Shield className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />,
       action: () => {
-        onScanStock('BTC');
+        onScanStock('TCS');
+        onSelectTab('threats');
+        setOpen(false);
+      }
+    },
+    {
+      id: 'scan-reliance',
+      category: 'INSTANT SCAN',
+      command: 'AUDIT RELIANCE INDUSTRIES (RELIANCE) THREAT DATA',
+      icon: <Shield className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />,
+      action: () => {
+        onScanStock('RELIANCE');
         onSelectTab('threats');
         setOpen(false);
       }

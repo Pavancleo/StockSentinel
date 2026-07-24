@@ -13,14 +13,14 @@ export default function CopilotChat() {
     {
       id: 'welcome',
       role: 'assistant',
-      content: `### Welcome to StockSentinel Core Intelligence
+      content: `### Welcome to StockSentinel Indian Market AI Copilot
 
-I am your **AI Financial Copilot**. I have live **Google Search Grounding** enabled, meaning I can crawl the live web to fetch up-to-the-minute stock prices, indices performance, earnings updates, and macro indicators.
+I am your **AI Financial Copilot** for the Indian Stock Market (NSE / BSE). I have live **Google Search Grounding** enabled, allowing me to crawl real-time market data, company filings, NIFTY 50 / SENSEX movements, and RBI policy updates.
 
 How can I assist your market intelligence today? Try asking:
-* "What is NVIDIA's current stock price and their latest product architecture news?"
-* "Analyze Tesla's immediate price action and key support levels."
-* "What is the macro interest rate forecast after the latest Federal Reserve minutes?"`,
+* "What is Infosys (INFY) current stock price and Q2 earnings forecast on NSE?"
+* "Analyze Reliance Industries (RELIANCE) green hydrogen giga-factory impact."
+* "What is the NIFTY 50 and Bank Nifty outlook following RBI's repo rate decision?"`,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
@@ -88,10 +88,10 @@ How can I assist your market intelligence today? Try asking:
   };
 
   const QUICK_PROMPTS = [
-    { label: 'Analyze NVDA', text: "What is NVIDIA's current stock price and latest Rubin architecture news?" },
-    { label: 'Tesla Supports', text: "Analyze Tesla's immediate stock price supports, resistance, and sentiment." },
-    { label: 'FED Policy', text: "Summarize the latest Federal Reserve interest rate projections and inflation comments." },
-    { label: 'Crypto Surge', text: "Analyze the current sentiment and whale activity behind Bitcoin and Ethereum prices." }
+    { label: 'Infosys INFY', text: "What is Infosys's (INFY) current stock price and latest deal wins?" },
+    { label: 'TCS Earnings', text: "Analyze TCS Q2 financial results and operating margin outlook." },
+    { label: 'Reliance Strategy', text: "What is Reliance Industries' (RELIANCE) clean energy expansion timeline?" },
+    { label: 'RBI Repo Policy', text: "Summarize the latest RBI Monetary Policy Committee decisions and NIFTY impact." }
   ];
 
   return (
@@ -241,7 +241,7 @@ How can I assist your market intelligence today? Try asking:
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-          placeholder="Ask Copilot: NVDA outlook, BTC threat risk, inflation targets..."
+          placeholder="Ask Copilot: INFY price, NIFTY target, TCS earnings, RBI policy..."
           className="flex-1 bg-brand-card/80 border border-brand-border hover:border-brand-border-hover focus:border-purple-500/50 rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-500 outline-none transition-all"
         />
         <button

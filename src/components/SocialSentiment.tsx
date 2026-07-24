@@ -9,10 +9,10 @@ import { SocialSentiment as SentimentType } from '../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { motion } from 'motion/react';
 
-const ASSETS = ['AAPL', 'TSLA', 'NVDA', 'MSFT', 'BTC', 'ETH', 'COIN'];
+const ASSETS = ['INFY', 'TCS', 'RELIANCE', 'HDFCBANK', 'TATAMOTORS', 'ICICIBANK', 'WIPRO', 'BHARTIARTL'];
 
 export default function SocialSentiment() {
-  const [symbol, setSymbol] = useState('NVDA');
+  const [symbol, setSymbol] = useState('INFY');
   const [loading, setLoading] = useState(false);
   const [sentiment, setSentiment] = useState<SentimentType | null>(null);
 

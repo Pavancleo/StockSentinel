@@ -52,9 +52,9 @@ export default function App() {
   // Real-time Market feeds state
   const [stocks, setStocks] = useState<StockPrice[]>([]);
   const [indices, setIndices] = useState<MarketIndex[]>([]);
-  const [selectedSymbol, setSelectedSymbol] = useState<string>('NVDA');
+  const [selectedSymbol, setSelectedSymbol] = useState<string>('INFY');
   const selectedStock = stocks.find((s) => s.symbol === selectedSymbol) || null;
-  const [activeExternalSymbol, setActiveExternalSymbol] = useState<string>('NVDA');
+  const [activeExternalSymbol, setActiveExternalSymbol] = useState<string>('INFY');
   const [timeStr, setTimeStr] = useState('');
 
   // 1. Live system clock UTC

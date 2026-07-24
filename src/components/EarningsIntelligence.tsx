@@ -9,32 +9,32 @@ import { EarningsIntelligence as EarningsType } from '../types';
 import { motion } from 'motion/react';
 
 const EARNINGS_TEMPLATES = {
-  TSLA: {
-    label: 'Tesla Q3 Earnings Draft',
-    transcript: `Good afternoon everyone, and welcome to our Q3 2026 Earnings Call. 
-This quarter we achieved a record delivery run rate of 495,000 electric vehicles. Consolidated revenues scaled 8.4% YoY to $26.8 billion, with Energy storage operations growing 140% as Megapack production hit record efficiencies.
-Our auto segment gross margins improved to 19.2% driven by reduced structural battery pack pack manufacturing assembly costs. 
-In terms of guidance, we are targeting 20% delivery growth in FY2027 and expect our Cybercab production pilot lines to commence in early Q1 2027. We expect elevated capital spending of $10.5 billion to support active supercomputing clusters.`
+  INFY: {
+    label: 'Infosys Q2 FY26 Earnings Call',
+    transcript: `Good evening everyone, and welcome to Infosys Fiscal Q2 2026 Earnings Briefing.
+We achieved strong constant currency revenue growth of 3.8% quarter-on-quarter, with total revenues hitting ₹41,800 crore. Large deal TCV (Total Contract Value) stood at an impressive $2.4 billion, with 52% net new acquisitions driven by enterprise GenAI adoption and cloud modernization projects.
+Operating margins expanded 40 basis points to 21.2% through operating leverage and automation gains under Project MaxSec.
+In terms of FY26 guidance, we are raising our revenue growth guidance to 3.75%-4.5% in constant currency terms while maintaining operating margin guidance at 20%-22%. Attrition moderated further to 12.9%.`
   },
-  NVDA: {
-    label: 'NVIDIA Q2 Performance Script',
-    transcript: `Welcome to NVIDIA's Fiscal Q2 2026 Financial Briefing. 
-We report staggering datacenter revenues of $26.3 billion, representing 152% growth YoY, driven by unstoppable demand for Hopper H200 and early scaling of Blackwell clusters. Total consolidated revenues rose to $30.0 billion.
-Gross margins remain elite at 75.1%. Capital expenditures are climbing as we deploy more custom manufacturing nodes, though foundry allocation constraints persist. 
-For Q3, we project revenue of $32.5 billion, plus or minus 2%, with continued solid margins. Next-generation Rubin systems remain on schedule for late 2026 deployment.`
+  TCS: {
+    label: 'TCS Q2 Financial Review',
+    transcript: `Welcome to Tata Consultancy Services Q2 FY26 Investor Call.
+Consolidated revenues reached ₹64,250 crore, marking 6.2% year-over-year expansion. Order book TCV remained resilient at $8.6 billion across banking, financial services, healthcare, and retail verticals.
+Operating margin came in at 24.5%, demonstrating cost discipline amidst variable global tech budgets.
+Our talent pool headcount grew net positive by 5,700 employees as campus onboarding resumed. We remain confident in digital transformation momentum and AI infrastructure deals across India, Europe, and North America.`
   },
-  AAPL: {
-    label: 'Apple Q4 Services Report',
-    transcript: `Thank you for joining Apple's Q4 Fiscal 2026 review. 
-Consolidated net revenues hit $94.8 billion, a record for our September quarter, up 6% YoY. services sector revenue reached an all-time high of $25.8 billion, driven by over 1.1 billion active paid subscriptions across Apple Intelligence pipelines.
-We sustained strong margins of 46.2% but note regulatory and antitrust headwind variables that could introduce minor commercial hurdles in European channels. 
-Our guidance points to stable mid-single-digit product accelerations in the December quarter.`
+  RELIANCE: {
+    label: 'Reliance Q2 Energy & Retail Report',
+    transcript: `Thank you for joining Reliance Industries Q2 FY26 Performance Call.
+Consolidated quarterly revenue reached ₹2,35,000 crore led by O2C, Digital Services (Jio), and Retail expansion. Jio Platforms reported subscriber base crossing 490 million with ARPU rising to ₹195.1 per month.
+Capital expenditure stood at ₹32,000 crore as phase-1 commissioning commenced for the Jamnagar clean energy gigafactories.
+Retail segment EBITDA expanded 18% YoY with over 18,800 operational stores across tier 1-4 Indian cities.`
   }
 };
 
 export default function EarningsIntelligence() {
-  const [symbol, setSymbol] = useState('NVDA');
-  const [transcript, setTranscript] = useState(EARNINGS_TEMPLATES.NVDA.transcript);
+  const [symbol, setSymbol] = useState('INFY');
+  const [transcript, setTranscript] = useState(EARNINGS_TEMPLATES.INFY.transcript);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<EarningsType | null>(null);
 
@@ -62,7 +62,7 @@ export default function EarningsIntelligence() {
     triggerAnalysis(symbol, transcript);
   };
 
-  const loadTemplate = (sym: 'TSLA' | 'NVDA' | 'AAPL') => {
+  const loadTemplate = (sym: 'INFY' | 'TCS' | 'RELIANCE') => {
     setSymbol(sym);
     setTranscript(EARNINGS_TEMPLATES[sym].transcript);
   };
@@ -158,22 +158,22 @@ export default function EarningsIntelligence() {
           <label className="block text-[9px] font-mono text-slate-500 uppercase tracking-widest font-bold">LOAD PRE-CONFIGURED CALL TEMPLATES</label>
           <div className="grid grid-cols-3 gap-2 font-mono">
             <button
-              onClick={() => loadTemplate('NVDA')}
+              onClick={() => loadTemplate('INFY')}
               className="text-[10px] bg-brand-deep hover:bg-brand-deep/80 border border-brand-border hover:border-brand-border-hover py-2 rounded-lg text-slate-300 cursor-pointer transition-all hover:-translate-y-0.5"
             >
-              NVIDIA Q2
+              INFOSYS Q2
             </button>
             <button
-              onClick={() => loadTemplate('TSLA')}
+              onClick={() => loadTemplate('TCS')}
               className="text-[10px] bg-brand-deep hover:bg-brand-deep/80 border border-brand-border hover:border-brand-border-hover py-2 rounded-lg text-slate-300 cursor-pointer transition-all hover:-translate-y-0.5"
             >
-              TESLA Q3
+              TCS Q2
             </button>
             <button
-              onClick={() => loadTemplate('AAPL')}
+              onClick={() => loadTemplate('RELIANCE')}
               className="text-[10px] bg-brand-deep hover:bg-brand-deep/80 border border-brand-border hover:border-brand-border-hover py-2 rounded-lg text-slate-300 cursor-pointer transition-all hover:-translate-y-0.5"
             >
-              APPLE Q4
+              RELIANCE Q2
             </button>
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function EarningsIntelligence() {
             type="text"
             value={symbol}
             onChange={(e) => setSymbol(e.target.value.toUpperCase())}
-            placeholder="e.g. MSFT, GOOG, NVDA..."
+            placeholder="e.g. INFY, TCS, RELIANCE, HDFCBANK..."
             className="w-full bg-brand-deep border border-brand-border focus:border-purple-500/50 rounded-xl p-3 font-mono text-xs text-slate-200 outline-none transition-all"
           />
         </div>

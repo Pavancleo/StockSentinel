@@ -8,10 +8,10 @@ import { ShieldAlert, AlertTriangle, RefreshCw, Cpu, TrendingDown, Eye, CheckCir
 import { ThreatAnalysis } from '../types';
 import { motion } from 'motion/react';
 
-const SYMBOLS_LIST = ['AAPL', 'TSLA', 'NVDA', 'MSFT', 'BTC', 'ETH', 'COIN'];
+const SYMBOLS_LIST = ['INFY', 'TCS', 'RELIANCE', 'HDFCBANK', 'TATAMOTORS', 'ICICIBANK', 'WIPRO', 'BHARTIARTL'];
 
 export default function ThreatDetector() {
-  const [symbol, setSymbol] = useState('NVDA');
+  const [symbol, setSymbol] = useState('INFY');
   const [userNotes, setUserNotes] = useState('');
   const [loading, setLoading] = useState(false);
   const [analysis, setAnalysis] = useState<ThreatAnalysis | null>(null);

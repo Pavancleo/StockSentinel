@@ -9,10 +9,10 @@ import { TrendingUp, Award, ArrowUpRight, ArrowDownRight, Activity, Zap, Layers,
 import { StockPrediction } from '../types';
 import { motion } from 'motion/react';
 
-const SYMBOLS = ['AAPL', 'TSLA', 'NVDA', 'MSFT', 'BTC', 'ETH', 'COIN'];
+const SYMBOLS = ['INFY', 'TCS', 'RELIANCE', 'HDFCBANK', 'TATAMOTORS', 'ICICIBANK', 'WIPRO', 'BHARTIARTL'];
 
 export default function StockPredictor() {
-  const [symbol, setSymbol] = useState('NVDA');
+  const [symbol, setSymbol] = useState('INFY');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<StockPrediction | null>(null);
 
