@@ -165,11 +165,11 @@ export default function CommandPalette({ onSelectTab, onScanStock }: CommandPale
       {/* Keyboard Shortcut Indicator Button in Nav */}
       <button
         onClick={() => setOpen(true)}
-        className="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-lg px-3 py-1.5 flex items-center gap-2 font-mono text-[10px] text-slate-400 hover:text-slate-200 transition-all cursor-pointer"
+        className="glass-pill text-[10px] text-slate-300 px-3.5 py-2 rounded-full border border-white/15 hover:border-white/30 flex items-center gap-2 cursor-pointer transition-all font-mono"
       >
-        <Search className="w-3.5 h-3.5 text-slate-500" />
+        <Search className="w-3.5 h-3.5 text-slate-400" />
         <span>COMMAND CENTER</span>
-        <kbd className="bg-slate-950 px-1.5 py-0.5 rounded text-[8px] border border-slate-800 text-slate-500 font-sans">
+        <kbd className="bg-white/10 px-1.5 py-0.5 rounded-full text-[8px] border border-white/20 text-slate-300 font-mono">
           Ctrl+K
         </kbd>
       </button>
@@ -177,72 +177,72 @@ export default function CommandPalette({ onSelectTab, onScanStock }: CommandPale
       {/* Floating Modal Backdrop */}
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-start justify-center pt-24 px-4">
+          <div className="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 flex items-start justify-center pt-24 px-4">
             {/* Close Backdrop Trigger */}
             <div className="absolute inset-0" onClick={() => setOpen(false)} />
 
             {/* Main Palette Card */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.97, y: -10 }}
+              initial={{ opacity: 0, scale: 0.96, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.97, y: -10 }}
-              className="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl relative z-10"
+              exit={{ opacity: 0, scale: 0.96, y: -10 }}
+              className="w-full max-w-xl glass-panel rounded-3xl overflow-hidden shadow-2xl relative z-10 border border-white/20"
             >
               {/* Search input line */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-slate-950/40">
-                <Search className="w-4 h-4 text-slate-500" />
+              <div className="flex items-center gap-2 px-5 py-4 border-b border-white/10 bg-white/5">
+                <Search className="w-4 h-4 text-cyan-400" />
                 <input
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Type a command or jump parameter..."
-                  className="flex-1 bg-transparent border-none text-slate-200 placeholder-slate-600 text-xs outline-none py-1"
+                  className="flex-1 bg-transparent border-none text-slate-100 placeholder-slate-400 text-xs outline-none py-1 font-mono"
                   autoFocus
                 />
                 <button
                   onClick={() => setOpen(false)}
-                  className="text-[10px] font-mono bg-slate-900 border border-slate-800 text-slate-500 px-1.5 py-0.5 rounded"
+                  className="text-[10px] font-mono glass-pill text-slate-400 px-2 py-0.5 rounded-full border border-white/15 cursor-pointer"
                 >
                   ESC
                 </button>
               </div>
 
               {/* Items scroll area */}
-              <div className="max-h-[320px] overflow-y-auto p-2 space-y-1 scrollbar-thin scrollbar-thumb-slate-850">
+              <div className="max-h-[320px] overflow-y-auto p-3 space-y-1.5 scrollbar-thin">
                 {filteredItems.length > 0 ? (
                   filteredItems.map((item) => (
                     <button
                       key={item.id}
                       onClick={item.action}
-                      className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-800/60 transition-all flex items-center justify-between group cursor-pointer"
+                      className="w-full text-left px-3.5 py-2.5 rounded-2xl glass-panel-interactive flex items-center justify-between group cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded bg-slate-950 border border-slate-850 flex items-center justify-center group-hover:border-cyan-500/30 transition-all">
+                        <div className="w-7 h-7 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center group-hover:border-cyan-400/40 transition-all">
                           {item.icon}
                         </div>
                         <div>
-                          <div className="text-[10px] font-mono font-bold text-slate-200 group-hover:text-cyan-400 transition-colors">
+                          <div className="text-[10px] font-mono font-bold text-slate-200 group-hover:text-cyan-300 transition-colors">
                             {item.command}
                           </div>
-                          <div className="text-[8px] font-mono text-slate-500 uppercase tracking-wider mt-0.5">
+                          <div className="text-[8px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">
                             {item.category}
                           </div>
                         </div>
                       </div>
 
                       {item.shortcut ? (
-                        <kbd className="text-[8px] font-mono bg-slate-950 border border-slate-800/80 text-slate-500 px-1.5 py-0.5 rounded group-hover:text-cyan-400 transition-colors">
+                        <kbd className="text-[8px] font-mono glass-pill text-slate-300 px-2 py-0.5 rounded-full group-hover:text-cyan-300 transition-colors">
                           {item.shortcut}
                         </kbd>
                       ) : (
-                        <ArrowRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-300 group-hover:translate-x-0.5 transition-all" />
                       )}
                     </button>
                   ))
                 ) : (
-                  <div className="py-8 text-center text-slate-500 font-mono text-[10px] space-y-1">
+                  <div className="py-8 text-center text-slate-400 font-mono text-[10px] space-y-1">
                     <div>NO COMMAND MATCHES FOR "{query.toUpperCase()}"</div>
-                    <div className="text-slate-600">TRY TYPING "GO" OR "SCAN"</div>
+                    <div className="text-slate-500">TRY TYPING "GO" OR "SCAN"</div>
                   </div>
                 )}
               </div>

@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-import { spawn } from "child_process";
+
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
@@ -15,20 +15,15 @@ const app = express();
 app.use(express.json());
 const PORT = 3000;
 
-const geminiApiKey = process.env.GEMINI_API_KEY;
-const hasValidKey = geminiApiKey && geminiApiKey !== 'MY_GEMINI_API_KEY' && geminiApiKey.trim() !== '';
-
 // Initialize Gemini Client
-const ai = hasValidKey
-  ? new GoogleGenAI({
-      apiKey: geminiApiKey,
-      httpOptions: {
-        headers: {
-          'User-Agent': 'aistudio-build',
-        }
-      }
-    })
-  : null;
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+  httpOptions: {
+    headers: {
+      'User-Agent': 'aistudio-build',
+    }
+  }
+});
 
 // Helper utilities for resilient API execution
 function runWithTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
@@ -384,9 +379,9 @@ app.get('/api/sentiment/:symbol', (req, res) => {
 
   const moodGauge =
     rawSentiment > 60 ? 'EUPHORIC' :
-      rawSentiment > 15 ? 'BULLISH' :
-        rawSentiment > -15 ? 'STABLE' :
-          rawSentiment > -60 ? 'FEARFUL' : 'PANIC';
+    rawSentiment > 15 ? 'BULLISH' :
+    rawSentiment > -15 ? 'STABLE' :
+    rawSentiment > -60 ? 'FEARFUL' : 'PANIC';
 
   res.json({
     symbol,
@@ -419,9 +414,6 @@ app.post('/api/threat-detection', async (req, res) => {
   };
 
   try {
-    if (!ai) {
-      throw new Error('Gemini API key is not configured');
-    }
     const prompt = `Perform a high-fidelity AI market threat detection, anomalies scan, and manipulation risk audit for stock: ${stock.symbol} (${stock.name}).
 Current Market Data: Price: $${stock.price}, Daily Change %: ${stock.changePercent}%, Trading Volume: ${stock.volume}, Sector: ${stock.sector}.
 Additional context/user notes: "${userNotes || 'None'}".
@@ -576,9 +568,6 @@ app.post('/api/predict', async (req, res) => {
   };
 
   try {
-    if (!ai) {
-      throw new Error('Gemini API key is not configured');
-    }
     const prompt = `Generate technical indicators and multi-horizon AI stock price predictions for ${stock.symbol} (${stock.name}).
 Current baseline price: $${stock.price}.
 You must predict the price targets for Tomorrow, 1 Week, 1 Month, and 3 Months.
@@ -745,9 +734,6 @@ We are confident in our operational leverage but highlight near-term labor and s
   const finalTranscript = transcriptText || defaultTranscript;
 
   try {
-    if (!ai) {
-      throw new Error('Gemini API key is not configured');
-    }
     const prompt = `Analyze this financial earnings call transcript for stock symbol: ${symbol.toUpperCase()}.
 Transcript text:
 "${finalTranscript}"
@@ -908,8 +894,8 @@ app.post('/api/risk-engine', (req, res) => {
 
   const recommendedAction =
     finalRisk < 30 ? 'AGGRESSIVE ACCUMULATE' :
-      finalRisk < 50 ? 'HOLD / SECTOR RE-BALANCING' :
-        finalRisk < 75 ? 'DECREASE EXPOSURE / PARKING IN BONDs' : 'LIQUIDATE POSITION';
+    finalRisk < 50 ? 'HOLD / SECTOR RE-BALANCING' :
+    finalRisk < 75 ? 'DECREASE EXPOSURE / PARKING IN BONDs' : 'LIQUIDATE POSITION';
 
   res.json({
     symbol: symbolUpper,
@@ -936,9 +922,6 @@ app.post('/api/chat', async (req, res) => {
   const lastMessage = messages[messages.length - 1]?.content || 'Hello';
 
   try {
-    if (!ai) {
-      throw new Error('Gemini API key is not configured');
-    }
     const systemInstruction = `You are StockSentinel Core Financial AI Copilot, a futuristic, high-integrity financial analyst platform.
 Your purpose is to answer stock, macroeconomic, and sentiment questions.
 You have the "googleSearch" tool enabled. ALWAYS use it for query inquiries on current stock prices, earnings dates, financial filings, and live news, ensuring real-world grounding.
@@ -958,23 +941,23 @@ Do NOT give regulatory-binding professional financial advice, but offer advanced
     );
 
     const reply = response.text || "I apologize, I am processing high volumes of market indicators. Please try querying this symbol again.";
-
+    
     // Extract search grounding metadata sources
     const groundingChunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks;
     const sources = groundingChunks
       ? groundingChunks
-        .map((chunk) => {
-          if (chunk.web) {
-            return {
-              title: chunk.web.title || 'Source',
-              url: chunk.web.uri || '#'
-            };
-          }
-          return null;
-        })
-        .filter((s): s is { title: string; url: string } => s !== null)
-        // Deduplicate
-        .filter((v, i, self) => self.findIndex((t) => t.url === v.url) === i)
+          .map((chunk) => {
+            if (chunk.web) {
+              return {
+                title: chunk.web.title || 'Source',
+                url: chunk.web.uri || '#'
+              };
+            }
+            return null;
+          })
+          .filter((s): s is { title: string; url: string } => s !== null)
+          // Deduplicate
+          .filter((v, i, self) => self.findIndex((t) => t.url === v.url) === i)
       : [];
 
     res.json({
@@ -1021,45 +1004,7 @@ async function initializeServer() {
     console.log(`StockSentinel server active on port ${PORT}`);
   });
 }
-app.get("/api/live-stock/:symbol", (req, res) => {
 
-  const symbol = req.params.symbol;
-
-  const python = spawn("python", [
-    "stock_service.py",
-    symbol
-  ]);
-
-  let data = "";
-
-  python.stdout.on("data", (chunk) => {
-    data += chunk.toString();
-  });
-
-  python.stderr.on("data", (err) => {
-    console.error(err.toString());
-  });
-
-  python.on("close", () => {
-
-    try {
-
-      const result = JSON.parse(data);
-
-      res.json(result);
-
-    } catch (error) {
-
-      res.status(500).json({
-        success: false,
-        message: "Python returned invalid data"
-      });
-
-    }
-
-  });
-
-});
 initializeServer().catch((err) => {
   console.error('Server initialization failed:', err);
 });

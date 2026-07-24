@@ -78,27 +78,27 @@ export default function StockPredictor() {
   return (
     <div id="stock-predictor" className="space-y-6 font-sans">
       {/* Top Controller Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-brand-card/50 backdrop-blur-md border border-brand-border px-6 py-5 rounded-2xl shadow-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel px-6 py-5 rounded-3xl">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
-            <TrendingUp className="w-4 h-4 text-cyan-400" />
+          <div className="w-10 h-10 rounded-2xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center backdrop-blur-md">
+            <TrendingUp className="w-4 h-4 text-cyan-300" />
           </div>
           <div>
-            <h2 className="text-xs font-mono font-bold text-slate-100 tracking-wider uppercase">AI MULTI-HORIZON PROJECTIONS</h2>
-            <p className="text-[10px] text-slate-500 font-mono tracking-wide">NEURAL FORECAST MODELS & TECHNICAL OSCILLATORS</p>
+            <h2 className="text-xs font-mono font-bold text-white tracking-wider uppercase">AI MULTI-HORIZON PROJECTIONS</h2>
+            <p className="text-[10px] text-slate-400 font-mono tracking-wide">NEURAL FORECAST MODELS & TECHNICAL OSCILLATORS</p>
           </div>
         </div>
 
         {/* Ticker Selector */}
-        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none font-mono">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none font-mono py-1">
           {SYMBOLS.map((sym) => (
             <button
               key={sym}
               onClick={() => setSymbol(sym)}
-              className={`text-xs px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+              className={`text-xs px-3.5 py-1.5 rounded-full border transition-all cursor-pointer ${
                 symbol === sym
-                  ? 'bg-cyan-500/10 border-cyan-500 text-cyan-200 font-bold shadow-md shadow-cyan-500/5'
-                  : 'bg-brand-card/40 border-brand-border text-slate-400 hover:border-brand-border-hover hover:text-slate-200'
+                  ? 'glass-pill-active text-white font-bold'
+                  : 'glass-pill text-slate-300 hover:text-white'
               }`}
             >
               {sym}
@@ -110,13 +110,13 @@ export default function StockPredictor() {
       {data ? (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Main Forecast Chart Card */}
-          <div className="lg:col-span-8 bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-4 shadow-xl">
-            <div className="flex items-center justify-between font-mono text-[10px] text-slate-400 pb-3 border-b border-brand-border">
+          <div className="lg:col-span-8 glass-panel p-6 rounded-3xl space-y-4">
+            <div className="flex items-center justify-between font-mono text-[10px] text-slate-300 pb-3 border-b border-white/10">
               <span className="flex items-center gap-1.5">
-                <BarChart2 className="w-3.5 h-3.5 text-cyan-400" />
+                <BarChart2 className="w-3.5 h-3.5 text-cyan-300" />
                 <span>FORECAST CURVE (10-DAY STEPPING INTERVAL)</span>
               </span>
-              <span className="text-purple-400 font-bold tracking-wider">CONFIDENCE INTERVAL: {data.confidence}%</span>
+              <span className="text-purple-300 font-bold tracking-wider">CONFIDENCE INTERVAL: {data.confidence}%</span>
             </div>
 
             {/* Interactive Area Chart */}

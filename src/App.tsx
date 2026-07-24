@@ -101,9 +101,9 @@ export default function App() {
           return (
             <div
               key={idx.name}
-              className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-3.5 rounded-xl flex flex-col justify-between font-mono text-[10px] space-y-1 hover:border-brand-border-hover hover:-translate-y-0.5 transition-all duration-200"
+              className="glass-panel-interactive p-3.5 rounded-2xl flex flex-col justify-between font-mono text-[10px] space-y-1"
             >
-              <div className="text-slate-500 uppercase font-bold text-[8px] tracking-wider">{idx.name}</div>
+              <div className="text-slate-400 uppercase font-bold text-[8px] tracking-wider">{idx.name}</div>
               <div className="text-white font-bold text-xs">{idx.value.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
               <div className={`flex items-center gap-0.5 font-bold ${isUp ? 'text-emerald-400' : 'text-red-400'}`}>
                 {isUp ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
@@ -120,28 +120,28 @@ export default function App() {
   if (!isLaunched) {
     return (
       <div id="landing-page" className="relative min-h-screen bg-brand-deep text-slate-100 flex flex-col justify-between overflow-hidden font-sans">
-        {/* Animated matrix grid background overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-        {/* Moving organic liquid background blobs */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-[10%] left-[10%] w-[35vw] h-[35vw] rounded-full bg-indigo-500/10 blur-[130px] animate-blob" />
-          <div className="absolute bottom-[15%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/10 blur-[120px] animate-blob animation-delay-2000" />
-          <div className="absolute top-[60%] left-[-5%] w-[30vw] h-[30vw] rounded-full bg-pink-500/8 blur-[110px] animate-blob animation-delay-4000" />
+        {/* Animated ambient liquid glass mesh blobs */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+          <div className="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[140px] animate-liquid-float" />
+          <div className="absolute bottom-[-10%] right-[-5%] w-[650px] h-[650px] bg-cyan-500/15 rounded-full blur-[160px] animate-liquid-float-reverse" />
+          <div className="absolute top-[40%] right-[20%] w-[450px] h-[450px] bg-pink-500/10 rounded-full blur-[150px] animate-liquid-float" />
+          <div className="absolute bottom-[30%] left-[15%] w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[130px] animate-liquid-float-reverse" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] opacity-40" />
         </div>
 
         {/* Top bar header */}
-        <header className="relative w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10 border-b border-brand-border bg-brand-deep/20 backdrop-blur-xl">
+        <header className="relative w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10 border-b border-white/10 bg-slate-900/30 backdrop-blur-2xl">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/5 border border-purple-500/30 flex items-center justify-center shadow-lg shadow-purple-500/5">
-              <ShieldAlert className="w-5 h-5 text-purple-400" />
+            <div className="w-10 h-10 rounded-2xl bg-purple-500/10 border border-purple-400/30 flex items-center justify-center shadow-lg shadow-purple-500/10 backdrop-blur-md">
+              <ShieldAlert className="w-5 h-5 text-purple-300" />
             </div>
             <div>
-              <span className="font-display font-bold text-sm tracking-wider text-white">STOCKSENTINEL</span>
-              <span className="text-[8px] font-mono block text-cyan-400 tracking-widest uppercase">MARKET AUDIT CORE</span>
+              <span className="font-display font-bold text-sm tracking-wider text-white liquid-gradient-text">STOCKSENTINEL</span>
+              <span className="text-[8px] font-mono block text-cyan-300 tracking-widest uppercase">LIQUID GLASS MARKET CORE</span>
             </div>
           </div>
-          <div className="font-mono text-[10px] text-slate-400 flex items-center gap-2 bg-brand-card px-3 py-1.5 rounded-full border border-brand-border">
-            <Clock className="w-3.5 h-3.5 text-cyan-500 animate-pulse" />
+          <div className="font-mono text-[10px] text-slate-300 flex items-center gap-2 glass-pill px-4 py-2 rounded-full border border-white/20">
+            <Clock className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
             <span>{timeStr}</span>
           </div>
         </header>
@@ -150,18 +150,18 @@ export default function App() {
         <main className="relative max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center flex-1 z-10 w-full">
           {/* Left Text column */}
           <div className="lg:col-span-5 space-y-6 text-left">
-            <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-3 py-1.5 rounded-full text-purple-300 font-mono text-[9px] uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-purple-400 animate-pulse-glow" />
-              <span>AI Market Threat Detection Active</span>
+            <div className="inline-flex items-center gap-2 glass-pill px-4 py-2 rounded-full text-purple-200 font-mono text-[9px] uppercase tracking-wider border border-purple-400/30">
+              <Sparkles className="w-3.5 h-3.5 text-purple-300 animate-pulse-glow" />
+              <span>AI Threat Radar Active • Liquid Glass Core</span>
             </div>
 
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-display font-extrabold tracking-tight leading-none text-white">
-                AI-POWERED <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">THREAT RADAR</span>
+                LIQUID AI <br />
+                <span className="liquid-gradient-text">THREAT RADAR</span>
               </h1>
-              <p className="text-xs text-slate-400 font-sans leading-relaxed max-w-md">
-                Continuous cognitive audits scanning circular trade spoofing, social pump-and-dump collusion, insider option anomalies, and earnings call transcript sentiments in real-time with zero human latency.
+              <p className="text-xs text-slate-300 font-sans leading-relaxed max-w-md">
+                Continuous cognitive market audits scanning spoofing anomalies, pump-and-dump patterns, insider option spikes, and transcript sentiments in real-time with zero latency.
               </p>
             </div>
 
@@ -172,7 +172,7 @@ export default function App() {
                   setIsLaunched(true);
                   setActiveTab('dashboard');
                 }}
-                className="bg-purple-600 hover:bg-purple-500 text-white font-mono font-bold text-xs px-6 py-3.5 rounded-lg transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-purple-500/10 hover:-translate-y-0.5 active:translate-y-0"
+                className="liquid-btn-primary text-white font-mono font-bold text-xs px-7 py-3.5 rounded-2xl transition-all flex items-center gap-2 cursor-pointer"
               >
                 <span>LAUNCH PLATFORM GATEWAY</span>
                 <ArrowUpRight className="w-4 h-4 text-purple-200" />
@@ -182,43 +182,43 @@ export default function App() {
                   setIsLaunched(true);
                   setActiveTab('copilot');
                 }}
-                className="bg-brand-card hover:bg-[#111114] border border-brand-border hover:border-brand-border-hover text-slate-300 font-mono font-medium text-xs px-6 py-3.5 rounded-lg transition-all cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
+                className="glass-panel-interactive text-slate-200 font-mono font-medium text-xs px-7 py-3.5 rounded-2xl cursor-pointer"
               >
                 ASK AI COPILOT
               </button>
             </div>
 
             {/* Core Tech Indicators specs */}
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border font-mono">
-              <div className="bg-brand-card/40 border border-brand-border p-3 rounded-lg">
-                <div className="text-lg font-bold text-slate-100">98.4%</div>
-                <div className="text-[8px] text-slate-500 uppercase mt-0.5">AUDIT CONFIDENCE</div>
+            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 font-mono">
+              <div className="glass-panel p-3.5 rounded-2xl">
+                <div className="text-lg font-bold text-white">98.4%</div>
+                <div className="text-[8px] text-slate-400 uppercase mt-0.5">AUDIT CONFIDENCE</div>
               </div>
-              <div className="bg-brand-card/40 border border-brand-border p-3 rounded-lg">
-                <div className="text-lg font-bold text-slate-100">3-SEC</div>
-                <div className="text-[8px] text-slate-500 uppercase mt-0.5">FEED TICK LATENCY</div>
+              <div className="glass-panel p-3.5 rounded-2xl">
+                <div className="text-lg font-bold text-white">3-SEC</div>
+                <div className="text-[8px] text-slate-400 uppercase mt-0.5">FEED TICK LATENCY</div>
               </div>
-              <div className="bg-brand-card/40 border border-brand-border p-3 rounded-lg">
-                <div className="text-lg font-bold text-cyan-400">ACTIVE</div>
-                <div className="text-[8px] text-slate-500 uppercase mt-0.5">GEMINI SEARCH LAYER</div>
+              <div className="glass-panel p-3.5 rounded-2xl">
+                <div className="text-lg font-bold text-cyan-300">ACTIVE</div>
+                <div className="text-[8px] text-slate-400 uppercase mt-0.5">GEMINI SEARCH LAYER</div>
               </div>
             </div>
           </div>
 
           {/* Right 3D Earth Globe and Cyber Hologram Column */}
           <div className="lg:col-span-7 flex flex-col items-center justify-center relative">
-            <div className="absolute inset-0 bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute inset-0 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
             <GlowGlobe />
           </div>
         </main>
 
         {/* Footer */}
-        <footer className="relative w-full max-w-7xl mx-auto px-6 py-6 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4 z-10 text-[9px] font-mono text-slate-500">
-          <div>STOCKSENTINEL © 2026. SECURE COGNITIVE CORE SYSTEM.</div>
+        <footer className="relative w-full max-w-7xl mx-auto px-6 py-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 z-10 text-[9px] font-mono text-slate-400">
+          <div>STOCKSENTINEL © 2026. LIQUID GLASS ARCHITECTURE.</div>
           <div className="flex gap-4">
-            <span className="text-cyan-500 hover:text-cyan-400 transition-colors">BLOOMBERG TERMINAL PAIRINGS</span>
+            <span className="text-cyan-400 hover:text-cyan-300 transition-colors">BLOOMBERG TERMINAL PAIRINGS</span>
             <span>•</span>
-            <span className="text-purple-400">GEMINI CLOUD RUN PIPELINES</span>
+            <span className="text-purple-300">GEMINI CLOUD RUN PIPELINES</span>
           </div>
         </footer>
       </div>
@@ -231,29 +231,30 @@ export default function App() {
 
   // Core Dashboard shell rendering
   return (
-    <div id="dashboard-shell" className="relative min-h-screen bg-brand-deep text-slate-200 flex flex-col font-sans selection:bg-cyan-500/20 overflow-hidden">
-      {/* Moving organic liquid background blobs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[10%] left-[10%] w-[35vw] h-[35vw] rounded-full bg-indigo-500/10 blur-[130px] animate-blob" />
-        <div className="absolute bottom-[15%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/10 blur-[120px] animate-blob animation-delay-2000" />
-        <div className="absolute top-[60%] left-[-5%] w-[30vw] h-[30vw] rounded-full bg-pink-500/8 blur-[110px] animate-blob animation-delay-4000" />
+    <div id="dashboard-shell" className="min-h-screen bg-[#060812] text-slate-100 flex flex-col font-sans selection:bg-purple-500/30 relative overflow-x-hidden">
+      {/* Background ambient glowing liquid light blobs */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-5%] w-[650px] h-[650px] bg-purple-600/15 rounded-full blur-[150px] animate-liquid-float" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[700px] h-[700px] bg-cyan-500/15 rounded-full blur-[170px] animate-liquid-float-reverse" />
+        <div className="absolute top-[35%] right-[10%] w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-[160px] animate-liquid-float" />
+        <div className="absolute bottom-[20%] left-[10%] w-[450px] h-[450px] bg-indigo-500/12 rounded-full blur-[140px] animate-liquid-float-reverse" />
       </div>
 
       {/* Platform Navigation Header */}
-      <header className="relative bg-brand-deep/55 backdrop-blur-xl border-b border-brand-border sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3 cursor-pointer select-none" onClick={() => setIsLaunched(false)}>
-            <div className="w-9 h-9 rounded-xl bg-purple-500/5 border border-purple-500/30 flex items-center justify-center shadow-lg shadow-purple-500/5">
-              <ShieldAlert className="w-5 h-5 text-purple-400" />
+      <header className="bg-slate-900/40 backdrop-blur-2xl border-b border-white/12 sticky top-0 z-40 shadow-2xl">
+        <div className="max-w-7xl mx-auto px-6 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
+          <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={() => setIsLaunched(false)}>
+            <div className="w-10 h-10 rounded-2xl bg-purple-500/10 border border-purple-400/30 flex items-center justify-center shadow-lg shadow-purple-500/10 backdrop-blur-md group-hover:scale-105 transition-transform">
+              <ShieldAlert className="w-5 h-5 text-purple-300" />
             </div>
             <div>
-              <span className="font-display font-bold text-xs tracking-wider text-white">STOCKSENTINEL</span>
-              <span className="text-[8px] font-mono block text-cyan-400 tracking-widest uppercase">MARKET AUDIT TERMINAL</span>
+              <span className="font-display font-bold text-sm tracking-wider text-white liquid-gradient-text">STOCKSENTINEL</span>
+              <span className="text-[8px] font-mono block text-cyan-300 tracking-widest uppercase">LIQUID GLASS TERMINAL</span>
             </div>
           </div>
 
           {/* Active Navigation Tabs */}
-          <nav className="flex items-center gap-1.5 overflow-x-auto max-w-full scrollbar-none font-mono text-[9px]">
+          <nav className="flex items-center gap-1.5 overflow-x-auto max-w-full scrollbar-none font-mono text-[9px] py-1">
             {[
               { id: 'dashboard', label: 'MARKET DASH', icon: <Terminal className="w-3.5 h-3.5" /> },
               { id: 'threats', label: 'RISK RADAR', icon: <ShieldAlert className="w-3.5 h-3.5 text-red-400" /> },
@@ -270,10 +271,10 @@ export default function App() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border uppercase transition-all cursor-pointer shrink-0 tracking-wider ${
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full border uppercase transition-all cursor-pointer shrink-0 tracking-wider ${
                   activeTab === tab.id
-                    ? 'bg-purple-500/10 border-purple-500/35 text-purple-200 font-bold'
-                    : 'bg-brand-card/40 border-brand-border text-slate-400 hover:border-brand-border-hover hover:text-slate-200'
+                    ? 'glass-pill-active font-bold text-white'
+                    : 'glass-pill text-slate-300 hover:text-white'
                 }`}
               >
                 {tab.icon}
@@ -285,8 +286,8 @@ export default function App() {
           {/* Action Tools */}
           <div className="flex items-center gap-3">
             <CommandPalette onSelectTab={setActiveTab} onScanStock={handleScanExternalStock} />
-            <div className="font-mono text-[10px] text-slate-400 bg-brand-card px-3 py-2 rounded-lg border border-brand-border flex items-center gap-2 shrink-0">
-              <Clock className="w-3.5 h-3.5 text-cyan-500" />
+            <div className="font-mono text-[10px] text-slate-300 glass-pill px-3.5 py-2 rounded-full border border-white/15 flex items-center gap-2 shrink-0">
+              <Clock className="w-3.5 h-3.5 text-cyan-400" />
               <span>{timeStr}</span>
             </div>
           </div>
@@ -294,7 +295,7 @@ export default function App() {
       </header>
 
       {/* Main Dashboard Panel Body */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6 relative z-10">
         <AnimatePresence mode="wait">
           {activeTab === 'dashboard' && (
             <motion.div
@@ -310,34 +311,34 @@ export default function App() {
               {/* Central Index with Candlestick view and tickers */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* Simulated Tickers side selector list */}
-                <div className="lg:col-span-4 bg-brand-card/50 backdrop-blur-md border border-brand-border p-5 rounded-2xl space-y-4 shadow-xl">
-                  <div className="flex justify-between items-center pb-3 border-b border-brand-border font-mono text-[10px]">
-                    <span className="text-slate-400 font-bold tracking-wider">ASSET CONTEXT SELECTOR</span>
-                    <span className="text-cyan-400 flex items-center gap-1.5">
+                <div className="lg:col-span-4 glass-panel p-5 rounded-3xl space-y-4">
+                  <div className="flex justify-between items-center pb-3 border-b border-white/10 font-mono text-[10px]">
+                    <span className="text-slate-300 font-bold tracking-wider uppercase">ASSET CONTEXT SELECTOR</span>
+                    <span className="text-cyan-300 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping" />
                       <span>3-SEC TICK INBOUND</span>
                     </span>
                   </div>
 
-                  <div className="space-y-2 max-h-[360px] overflow-y-auto scrollbar-thin pr-1">
+                  <div className="space-y-2.5 max-h-[360px] overflow-y-auto scrollbar-thin pr-1">
                     {stocks.map((stk) => {
                       const isUp = stk.change >= 0;
                       return (
                         <button
                           key={stk.symbol}
                           onClick={() => setSelectedSymbol(stk.symbol)}
-                          className={`w-full p-3 rounded-xl border text-left flex justify-between items-center transition-all cursor-pointer ${
+                          className={`w-full p-3.5 rounded-2xl border text-left flex justify-between items-center transition-all cursor-pointer ${
                             selectedSymbol === stk.symbol
-                              ? 'bg-cyan-500/5 border-cyan-500/40 shadow-sm shadow-cyan-500/5'
-                              : 'bg-brand-card/30 border-brand-border hover:border-brand-border-hover'
+                              ? 'bg-purple-500/15 border-purple-400/40 shadow-lg shadow-purple-500/10 backdrop-blur-xl'
+                              : 'glass-panel-interactive border-white/10 hover:border-white/25'
                           }`}
                         >
                           <div className="font-mono">
                             <div className="text-xs font-bold text-white">{stk.symbol}</div>
-                            <div className="text-[8px] text-slate-500 uppercase tracking-wide">{stk.name}</div>
+                            <div className="text-[8px] text-slate-400 uppercase tracking-wide">{stk.name}</div>
                           </div>
                           <div className="text-right font-mono">
-                            <div className="text-xs font-bold text-slate-200">${stk.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            <div className="text-xs font-bold text-slate-100">${stk.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                             <div className={`text-[9px] font-bold flex items-center justify-end gap-0.5 ${isUp ? 'text-emerald-400' : 'text-red-400'}`}>
                               {isUp ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
                               <span>{isUp ? '+' : ''}{stk.changePercent}%</span>
@@ -350,19 +351,19 @@ export default function App() {
                 </div>
 
                 {/* Selected Stock interactive Recharts graph */}
-                <div className="lg:col-span-8 bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl shadow-xl space-y-4">
+                <div className="lg:col-span-8 glass-panel p-6 rounded-3xl space-y-4">
                   {selectedStock ? (
                     <>
-                      <div className="flex justify-between items-start border-b border-brand-border pb-4">
+                      <div className="flex justify-between items-start border-b border-white/10 pb-4">
                         <div className="font-mono">
-                          <h2 className="text-base font-black text-white flex items-center gap-1.5">
+                          <h2 className="text-lg font-black text-white flex items-center gap-2">
                             <span>{selectedStock.symbol}</span>
-                            <span className="text-[9px] bg-brand-card border border-brand-border px-2 py-0.5 rounded-md uppercase text-slate-400 font-normal tracking-wide">{selectedStock.sector}</span>
+                            <span className="text-[9px] glass-pill border border-white/15 px-2.5 py-0.5 rounded-full uppercase text-slate-300 font-normal tracking-wide">{selectedStock.sector}</span>
                           </h2>
                           <p className="text-[10px] text-slate-400 uppercase mt-0.5 tracking-wider">{selectedStock.name}</p>
                         </div>
                         <div className="text-right font-mono">
-                          <div className="text-base font-black text-white">${selectedStock.price}</div>
+                          <div className="text-lg font-black text-white">${selectedStock.price}</div>
                           <div className={`text-xs font-bold flex items-center justify-end gap-0.5 ${selectedStock.change >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                             {selectedStock.change >= 0 ? '+' : ''}{selectedStock.change} ({selectedStock.changePercent}%)
                           </div>
@@ -375,14 +376,14 @@ export default function App() {
                           <AreaChart data={selectedStock.history} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                             <defs>
                               <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.15}/>
+                                <stop offset="5%" stopColor="#c084fc" stopOpacity={0.3}/>
                                 <stop offset="95%" stopColor="#0ea5e9" stopOpacity={0.0}/>
                               </linearGradient>
                             </defs>
-                            <XAxis dataKey="time" stroke="#475569" style={{ fontSize: '8px', fontFamily: 'JetBrains Mono' }} />
-                            <YAxis domain={['auto', 'auto']} stroke="#475569" style={{ fontSize: '8px', fontFamily: 'JetBrains Mono' }} />
-                            <Tooltip contentStyle={{ background: '#0c0c0e', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '8px', fontSize: '9px', fontFamily: 'JetBrains Mono', color: '#f1f5f9' }} />
-                            <Area type="monotone" dataKey="price" stroke="#0ea5e9" strokeWidth={1.5} fill="url(#chartGrad)" />
+                            <XAxis dataKey="time" stroke="#64748b" style={{ fontSize: '8px', fontFamily: 'JetBrains Mono' }} />
+                            <YAxis domain={['auto', 'auto']} stroke="#64748b" style={{ fontSize: '8px', fontFamily: 'JetBrains Mono' }} />
+                            <Tooltip contentStyle={{ background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '12px', fontSize: '9px', fontFamily: 'JetBrains Mono', color: '#f8fafc' }} />
+                            <Area type="monotone" dataKey="price" stroke="#c084fc" strokeWidth={2} fill="url(#chartGrad)" />
                           </AreaChart>
                         </ResponsiveContainer>
                       </div>
@@ -392,33 +393,33 @@ export default function App() {
                         <ResponsiveContainer width="100%" height="100%">
                           <BarChart data={selectedStock.history} margin={{ top: 0, right: 10, left: -20, bottom: 0 }}>
                             <XAxis dataKey="time" hide />
-                            <Bar dataKey="volume" fill="rgba(255, 255, 255, 0.06)" radius={[2, 2, 0, 0]} />
+                            <Bar dataKey="volume" fill="rgba(255, 255, 255, 0.12)" radius={[3, 3, 0, 0]} />
                           </BarChart>
                         </ResponsiveContainer>
                       </div>
 
                       {/* Info grid metrics */}
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-[10px] text-slate-400 pt-3 border-t border-brand-border">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-[10px] text-slate-300 pt-3 border-t border-white/10">
                         <div>
-                          <span className="text-slate-500">DAILY HIGH:</span>
-                          <span className="text-slate-200 font-bold block text-xs mt-0.5">${selectedStock.high}</span>
+                          <span className="text-slate-400">DAILY HIGH:</span>
+                          <span className="text-white font-bold block text-xs mt-0.5">${selectedStock.high}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">DAILY LOW:</span>
-                          <span className="text-slate-200 font-bold block text-xs mt-0.5">${selectedStock.low}</span>
+                          <span className="text-slate-400">DAILY LOW:</span>
+                          <span className="text-white font-bold block text-xs mt-0.5">${selectedStock.low}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">OPEN VALUE:</span>
-                          <span className="text-slate-200 font-bold block text-xs mt-0.5">${selectedStock.open}</span>
+                          <span className="text-slate-400">OPEN VALUE:</span>
+                          <span className="text-white font-bold block text-xs mt-0.5">${selectedStock.open}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">MARKET CAP:</span>
-                          <span className="text-cyan-400 font-bold block text-xs mt-0.5">{selectedStock.marketCap}</span>
+                          <span className="text-slate-400">MARKET CAP:</span>
+                          <span className="text-cyan-300 font-bold block text-xs mt-0.5">{selectedStock.marketCap}</span>
                         </div>
                       </div>
                     </>
                   ) : (
-                    <div className="h-[250px] flex items-center justify-center font-mono text-slate-500">
+                    <div className="h-[250px] flex items-center justify-center font-mono text-slate-400">
                       <span>LOADING GRAPH ENGINES...</span>
                     </div>
                   )}
@@ -428,20 +429,20 @@ export default function App() {
               {/* Dynamic Gainers vs Losers Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Gainers */}
-                <div className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-4 shadow-xl">
+                <div className="glass-panel p-6 rounded-3xl space-y-4">
                   <div className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
                     <TrendingUp className="w-4 h-4" />
                     <span>TOP SECTOR ACCUMULATORS (GAINERS)</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {topGainers.map((tg) => (
-                      <div key={tg.symbol} className="bg-brand-card/30 border border-brand-border p-3.5 rounded-xl flex justify-between items-center font-mono hover:border-brand-border-hover transition-colors">
+                      <div key={tg.symbol} className="glass-panel-interactive p-3.5 rounded-2xl flex justify-between items-center font-mono">
                         <div>
                           <div className="text-xs font-bold text-white">{tg.symbol}</div>
-                          <div className="text-[8px] text-slate-500 uppercase tracking-wide">{tg.name.split(' ')[0]}</div>
+                          <div className="text-[8px] text-slate-400 uppercase tracking-wide">{tg.name.split(' ')[0]}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-xs text-slate-200 font-bold">${tg.price}</div>
+                          <div className="text-xs text-slate-100 font-bold">${tg.price}</div>
                           <div className="text-[10px] text-emerald-400 font-bold flex items-center gap-0.5 justify-end">
                             <ArrowUpRight className="w-3 h-3" />
                             +{tg.changePercent}%
@@ -453,20 +454,20 @@ export default function App() {
                 </div>
 
                 {/* Losers */}
-                <div className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-4 shadow-xl">
+                <div className="glass-panel p-6 rounded-3xl space-y-4">
                   <div className="text-xs font-mono font-bold text-red-400 uppercase tracking-wider flex items-center gap-2">
                     <ShieldAlert className="w-4 h-4" />
                     <span>TOP SECTOR LIQUIDATORS (LOSERS)</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {topLosers.map((tl) => (
-                      <div key={tl.symbol} className="bg-brand-card/30 border border-brand-border p-3.5 rounded-xl flex justify-between items-center font-mono hover:border-brand-border-hover transition-colors">
+                      <div key={tl.symbol} className="glass-panel-interactive p-3.5 rounded-2xl flex justify-between items-center font-mono">
                         <div>
                           <div className="text-xs font-bold text-white">{tl.symbol}</div>
-                          <div className="text-[8px] text-slate-500 uppercase tracking-wide">{tl.name.split(' ')[0]}</div>
+                          <div className="text-[8px] text-slate-400 uppercase tracking-wide">{tl.name.split(' ')[0]}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-xs text-slate-200 font-bold">${tl.price}</div>
+                          <div className="text-xs text-slate-100 font-bold">${tl.price}</div>
                           <div className="text-[10px] text-red-400 font-bold flex items-center gap-0.5 justify-end">
                             <ArrowDownRight className="w-3 h-3" />
                             {tl.changePercent}%

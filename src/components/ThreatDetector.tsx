@@ -61,10 +61,10 @@ export default function ThreatDetector() {
   return (
     <div id="threat-detector" className="grid grid-cols-1 lg:grid-cols-12 gap-6 font-sans">
       {/* Control Configuration panel */}
-      <div className="lg:col-span-4 bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-5 shadow-xl">
-        <div className="flex items-center gap-2 pb-3 border-b border-brand-border">
+      <div className="lg:col-span-4 glass-panel p-6 rounded-3xl space-y-5">
+        <div className="flex items-center gap-2 pb-3 border-b border-white/10">
           <ShieldAlert className="w-5 h-5 text-red-400" />
-          <h2 className="text-xs font-mono font-bold text-slate-200 tracking-wider">THREAT INTELLIGENCE RADAR</h2>
+          <h2 className="text-xs font-mono font-bold text-white tracking-wider">THREAT INTELLIGENCE RADAR</h2>
         </div>
 
         <div>
@@ -74,10 +74,10 @@ export default function ThreatDetector() {
               <button
                 key={sym}
                 onClick={() => setSymbol(sym)}
-                className={`text-xs font-mono px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                className={`text-xs font-mono px-3.5 py-1.5 rounded-full border transition-all cursor-pointer ${
                   symbol === sym
-                    ? 'bg-purple-500/10 border-purple-500 text-purple-200 shadow-md shadow-purple-500/5 font-bold'
-                    : 'bg-brand-card/40 border-brand-border text-slate-400 hover:border-brand-border-hover hover:text-slate-200'
+                    ? 'glass-pill-active text-white font-bold'
+                    : 'glass-pill text-slate-300 hover:text-white'
                 }`}
               >
                 {sym}
@@ -92,29 +92,29 @@ export default function ThreatDetector() {
             value={userNotes}
             onChange={(e) => setUserNotes(e.target.value)}
             placeholder="e.g. Audit recent SEC Form 4 filings for directors, or look for volume breakouts in high-frequency trading books..."
-            className="w-full bg-brand-deep/60 border border-brand-border hover:border-brand-border-hover focus:border-purple-500/50 rounded-xl p-3 text-xs text-slate-200 placeholder-slate-600 outline-none h-24 resize-none transition-all"
+            className="w-full glass-input rounded-2xl p-3.5 text-xs text-white placeholder-slate-400 outline-none h-24 resize-none transition-all font-sans"
           />
         </div>
 
         <button
           onClick={handleScan}
           disabled={loading}
-          className="w-full bg-red-600 hover:bg-red-500 disabled:bg-brand-card text-white font-mono font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-red-950/20 hover:-translate-y-0.5 active:translate-y-0"
+          className="w-full liquid-btn-primary py-3.5 rounded-2xl font-mono text-xs flex items-center justify-center gap-2 cursor-pointer"
         >
           {loading ? (
             <>
-              <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+              <RefreshCw className="w-3.5 h-3.5 animate-spin text-white" />
               <span>RUNNING AI SECURITY AUDIT...</span>
             </>
           ) : (
             <>
-              <Zap className="w-3.5 h-3.5 animate-pulse" />
+              <Zap className="w-3.5 h-3.5 animate-pulse text-white" />
               <span>SCAN MARKET THREAT DATABASE</span>
             </>
           )}
         </button>
 
-        <div className="p-3.5 bg-brand-deep/40 border border-brand-border rounded-xl text-[10px] font-mono text-slate-500 leading-relaxed">
+        <div className="p-3.5 glass-panel rounded-2xl text-[10px] font-mono text-slate-400 leading-relaxed border border-white/10">
           <span className="text-red-400 font-bold">DISCLAIMER:</span> StockSentinel Threat Detector monitors abnormal data structures, order cancel ratios, and high-frequency circular trading flows to assign relative risks.
         </div>
       </div>
@@ -124,9 +124,9 @@ export default function ThreatDetector() {
         {analysis ? (
           <div className="space-y-6">
             {/* Top Score Summary Banner */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 glass-panel p-6 rounded-3xl">
               {/* Risk Gauge */}
-              <div className="md:col-span-4 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-brand-border pb-4 md:pb-0 md:pr-4">
+              <div className="md:col-span-4 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-4">
                 <div className="relative w-28 h-28 flex items-center justify-center">
                   {/* Circular Arc SVG indicator */}
                   <svg className="w-full h-full transform -rotate-90">
@@ -134,7 +134,7 @@ export default function ThreatDetector() {
                       cx="56"
                       cy="56"
                       r="48"
-                      stroke="rgba(255, 255, 255, 0.02)"
+                      stroke="rgba(255, 255, 255, 0.05)"
                       strokeWidth="8"
                       fill="transparent"
                     />
@@ -151,8 +151,8 @@ export default function ThreatDetector() {
                     />
                   </svg>
                   <div className="absolute text-center">
-                    <div className="text-2xl font-mono font-bold text-slate-100">{analysis.riskScore}</div>
-                    <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">RISK SCORE</div>
+                    <div className="text-2xl font-mono font-bold text-white">{analysis.riskScore}</div>
+                    <div className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">RISK SCORE</div>
                   </div>
                 </div>
               </div>
@@ -161,40 +161,40 @@ export default function ThreatDetector() {
               <div className="md:col-span-8 flex flex-col justify-between space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-sm font-mono font-bold text-slate-100">{analysis.symbol} : AUDIT PROFILE</h3>
-                    <p className="text-[10px] text-slate-400 font-mono uppercase tracking-wide">{analysis.companyName}</p>
+                    <h3 className="text-sm font-mono font-bold text-white">{analysis.symbol} : AUDIT PROFILE</h3>
+                    <p className="text-[10px] text-slate-300 font-mono uppercase tracking-wide">{analysis.companyName}</p>
                   </div>
                   <div className="text-right">
-                    <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-md border tracking-wider ${
-                      analysis.riskScore > 75 ? 'bg-red-500/10 border-red-500/30 text-red-400' :
-                      analysis.riskScore > 55 ? 'bg-amber-500/10 border-amber-500/30 text-amber-400' :
-                      'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
+                    <span className={`text-[10px] font-mono font-bold px-3 py-1 rounded-full border tracking-wider ${
+                      analysis.riskScore > 75 ? 'bg-red-500/20 border-red-400/40 text-red-300' :
+                      analysis.riskScore > 55 ? 'bg-amber-500/20 border-amber-400/40 text-amber-300' :
+                      'bg-cyan-500/20 border-cyan-400/40 text-cyan-300'
                     }`}>
                       {analysis.threatLevel} RISK
                     </span>
-                    <div className="text-[9px] font-mono text-slate-500 mt-1.5 uppercase tracking-wide">CONFIDENCE: {analysis.confidence}%</div>
+                    <div className="text-[9px] font-mono text-slate-400 mt-1.5 uppercase tracking-wide">CONFIDENCE: {analysis.confidence}%</div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3.5">
-                  <div className="bg-brand-deep/50 border border-brand-border p-3 rounded-xl text-center">
-                    <div className="text-[9px] text-slate-500 font-mono uppercase tracking-wide">SPOOFING</div>
-                    <div className="text-xs font-mono font-bold text-slate-200 mt-0.5">{analysis.manipulationIndicators.spoofingRisk}%</div>
-                    <div className="w-full bg-slate-900 h-1 rounded-full mt-2 overflow-hidden">
+                  <div className="glass-panel p-3 rounded-2xl text-center border border-white/10">
+                    <div className="text-[9px] text-slate-400 font-mono uppercase tracking-wide">SPOOFING</div>
+                    <div className="text-xs font-mono font-bold text-white mt-0.5">{analysis.manipulationIndicators.spoofingRisk}%</div>
+                    <div className="w-full bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
                       <div className="bg-cyan-400 h-full" style={{ width: `${analysis.manipulationIndicators.spoofingRisk}%` }} />
                     </div>
                   </div>
-                  <div className="bg-brand-deep/50 border border-brand-border p-3 rounded-xl text-center">
-                    <div className="text-[9px] text-slate-500 font-mono uppercase tracking-wide">PUMP RISK</div>
-                    <div className="text-xs font-mono font-bold text-slate-200 mt-0.5">{analysis.manipulationIndicators.pumpAndDumpRisk}%</div>
-                    <div className="w-full bg-slate-900 h-1 rounded-full mt-2 overflow-hidden">
+                  <div className="glass-panel p-3 rounded-2xl text-center border border-white/10">
+                    <div className="text-[9px] text-slate-400 font-mono uppercase tracking-wide">PUMP RISK</div>
+                    <div className="text-xs font-mono font-bold text-white mt-0.5">{analysis.manipulationIndicators.pumpAndDumpRisk}%</div>
+                    <div className="w-full bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
                       <div className="bg-purple-400 h-full" style={{ width: `${analysis.manipulationIndicators.pumpAndDumpRisk}%` }} />
                     </div>
                   </div>
-                  <div className="bg-brand-deep/50 border border-brand-border p-3 rounded-xl text-center">
-                    <div className="text-[9px] text-slate-500 font-mono uppercase tracking-wide">WASH TRADE</div>
-                    <div className="text-xs font-mono font-bold text-slate-200 mt-0.5">{analysis.manipulationIndicators.washTradingRisk}%</div>
-                    <div className="w-full bg-slate-900 h-1 rounded-full mt-2 overflow-hidden">
+                  <div className="glass-panel p-3 rounded-2xl text-center border border-white/10">
+                    <div className="text-[9px] text-slate-400 font-mono uppercase tracking-wide">WASH TRADE</div>
+                    <div className="text-xs font-mono font-bold text-white mt-0.5">{analysis.manipulationIndicators.washTradingRisk}%</div>
+                    <div className="w-full bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
                       <div className="bg-red-400 h-full" style={{ width: `${analysis.manipulationIndicators.washTradingRisk}%` }} />
                     </div>
                   </div>
@@ -203,12 +203,12 @@ export default function ThreatDetector() {
             </div>
 
             {/* AI Explainable Summary Block */}
-            <div className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-3.5 shadow-xl">
-              <div className="flex items-center gap-1.5 text-purple-400 text-xs font-mono font-bold uppercase tracking-wider">
+            <div className="glass-panel p-6 rounded-3xl space-y-3.5">
+              <div className="flex items-center gap-1.5 text-purple-300 text-xs font-mono font-bold uppercase tracking-wider">
                 <Cpu className="w-4 h-4 animate-pulse-glow" />
                 <span>EXPLAINABLE AI THREAT AUDIT REPORT</span>
               </div>
-              <p className="text-xs text-slate-300 font-sans leading-relaxed bg-brand-deep/30 border border-brand-border p-4 rounded-xl">
+              <p className="text-xs text-slate-200 font-sans leading-relaxed glass-panel p-4 rounded-2xl border border-white/10">
                 {analysis.aiReasoning}
               </p>
             </div>
@@ -216,44 +216,44 @@ export default function ThreatDetector() {
             {/* Danger Grid: Detected Anomalies & Inside trades */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Detected Anomalies */}
-              <div className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-4 shadow-xl">
-                <div className="text-xs font-mono font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+              <div className="glass-panel p-6 rounded-3xl space-y-4">
+                <div className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                  <AlertTriangle className="w-4 h-4 text-amber-300" />
                   <span>DETECTED ANOMALIES</span>
                 </div>
                 <div className="space-y-2.5 max-h-[220px] overflow-y-auto scrollbar-thin pr-1">
                   {analysis.detectedThreats.map((t, idx) => (
-                    <div key={idx} className="bg-brand-deep/30 border border-brand-border p-3 rounded-xl space-y-1.5 hover:border-brand-border-hover transition-colors">
+                    <div key={idx} className="glass-panel p-3.5 rounded-2xl space-y-1.5 border border-white/10">
                       <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono font-bold text-slate-200 truncate">{t.type}</span>
-                        <span className={`text-[8px] font-mono font-bold px-1.5 py-0.5 rounded border uppercase shrink-0 ${getSeverityStyle(t.severity)}`}>
+                        <span className="text-[11px] font-mono font-bold text-white truncate">{t.type}</span>
+                        <span className={`text-[8px] font-mono font-bold px-2 py-0.5 rounded-full border uppercase shrink-0 ${getSeverityStyle(t.severity)}`}>
                           {t.severity}
                         </span>
                       </div>
-                      <p className="text-[10px] text-slate-400 leading-relaxed font-sans">{t.description}</p>
+                      <p className="text-[10px] text-slate-300 leading-relaxed font-sans">{t.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Insider Trading Reports */}
-              <div className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-4 shadow-xl">
-                <div className="text-xs font-mono font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                  <Eye className="w-4 h-4 text-cyan-400" />
+              <div className="glass-panel p-6 rounded-3xl space-y-4">
+                <div className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                  <Eye className="w-4 h-4 text-cyan-300" />
                   <span>SEC INSIDER TRANSACTIONS</span>
                 </div>
                 <div className="space-y-2 max-h-[220px] overflow-y-auto scrollbar-thin pr-1">
                   {analysis.insiderActivity.map((ins, idx) => (
-                    <div key={idx} className="bg-brand-deep/30 border border-brand-border p-3 rounded-xl flex items-center justify-between font-mono text-[10px] hover:border-brand-border-hover transition-colors">
+                    <div key={idx} className="glass-panel p-3 rounded-2xl flex items-center justify-between font-mono text-[10px] border border-white/10">
                       <div>
                         <div className={`font-bold ${ins.buyerSeller.toLowerCase().includes('sell') ? 'text-red-400' : 'text-emerald-400'}`}>
                           {ins.buyerSeller}
                         </div>
-                        <div className="text-[8px] text-slate-500 mt-0.5">DATE: {ins.date}</div>
+                        <div className="text-[8px] text-slate-400 mt-0.5">DATE: {ins.date}</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-slate-200 font-medium">{ins.shares.toLocaleString()} SHARES</div>
-                        <div className="text-slate-400 text-[9px] mt-0.5">VALUE: {ins.value}</div>
+                        <div className="text-white font-medium">{ins.shares.toLocaleString()} SHARES</div>
+                        <div className="text-slate-300 text-[9px] mt-0.5">VALUE: {ins.value}</div>
                       </div>
                     </div>
                   ))}
@@ -262,15 +262,15 @@ export default function ThreatDetector() {
             </div>
 
             {/* Live Whales blocks */}
-            <div className="bg-brand-card/50 backdrop-blur-md border border-brand-border p-6 rounded-2xl space-y-4 shadow-xl">
-              <div className="text-xs font-mono font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                <TrendingDown className="text-purple-400 w-4 h-4" />
+            <div className="glass-panel p-6 rounded-3xl space-y-4">
+              <div className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                <TrendingDown className="text-purple-300 w-4 h-4" />
                 <span>WHALE OTC BLOCK MONITOR</span>
               </div>
               <div className="overflow-x-auto scrollbar-thin">
-                <table className="w-full text-left font-mono text-[10px] text-slate-400">
+                <table className="w-full text-left font-mono text-[10px] text-slate-300">
                   <thead>
-                    <tr className="border-b border-brand-border text-slate-500 uppercase text-[8px] tracking-wider">
+                    <tr className="border-b border-white/10 text-slate-400 uppercase text-[8px] tracking-wider">
                       <th className="py-2.5">TIMESTAMP</th>
                       <th>ACTION</th>
                       <th className="text-right">VOLUME</th>
@@ -280,16 +280,16 @@ export default function ThreatDetector() {
                   </thead>
                   <tbody>
                     {analysis.whaleTrades.map((w, idx) => (
-                      <tr key={idx} className="border-b border-brand-border/40 hover:bg-brand-deep/20 transition-colors">
-                        <td className="py-2.5 text-slate-500">{w.time}</td>
+                      <tr key={idx} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                        <td className="py-2.5 text-slate-400">{w.time}</td>
                         <td>
                           <span className={`font-bold ${w.action === 'BUY' ? 'text-emerald-400' : 'text-red-400'}`}>
                             {w.action}
                           </span>
                         </td>
-                        <td className="text-right text-slate-300 font-medium">{w.shares.toLocaleString()}</td>
-                        <td className="text-right text-slate-300">${w.price.toFixed(2)}</td>
-                        <td className="text-right text-cyan-400 font-bold">{w.value}</td>
+                        <td className="text-right text-slate-200 font-medium">{w.shares.toLocaleString()}</td>
+                        <td className="text-right text-slate-200">${w.price.toFixed(2)}</td>
+                        <td className="text-right text-cyan-300 font-bold">{w.value}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -298,9 +298,9 @@ export default function ThreatDetector() {
             </div>
           </div>
         ) : (
-          <div className="h-[400px] flex items-center justify-center bg-brand-card/50 backdrop-blur-md border border-brand-border rounded-2xl shadow-xl">
-            <div className="text-center font-mono space-y-3.5 text-slate-400">
-              <Cpu className="w-8 h-8 animate-spin mx-auto text-purple-400" />
+          <div className="h-[400px] flex items-center justify-center glass-panel rounded-3xl">
+            <div className="text-center font-mono space-y-3.5 text-slate-300">
+              <Cpu className="w-8 h-8 animate-spin mx-auto text-purple-300" />
               <div className="tracking-widest uppercase text-xs">LOADING RISK CORE MATRIX...</div>
             </div>
           </div>
