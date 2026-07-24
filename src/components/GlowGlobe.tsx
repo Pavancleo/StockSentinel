@@ -22,12 +22,12 @@ interface ConnectionArc {
 }
 
 const CITIES: CityNode[] = [
-  { name: 'New York (NYSE)', lat: 40.7128, lon: -74.006, x: 0, y: 0, z: 0 },
-  { name: 'London (LSE)', lat: 51.5074, lon: -0.1278, x: 0, y: 0, z: 0 },
-  { name: 'Tokyo (TSE)', lat: 35.6762, lon: 139.6503, x: 0, y: 0, z: 0 },
-  { name: 'Mumbai (NSE)', lat: 19.076, lon: 72.8777, x: 0, y: 0, z: 0 },
-  { name: 'Frankfurt (FSX)', lat: 50.1109, lon: 8.6821, x: 0, y: 0, z: 0 },
-  { name: 'Sydney (ASX)', lat: -33.8688, lon: 151.2093, x: 0, y: 0, z: 0 },
+  { name: 'Mumbai (NSE/BSE)', lat: 19.0760, lon: 72.8777, x: 0, y: 0, z: 0 },
+  { name: 'Bengaluru', lat: 12.9716, lon: 77.5946, x: 0, y: 0, z: 0 },
+  { name: 'Hyderabad', lat: 17.3850, lon: 78.4867, x: 0, y: 0, z: 0 },
+  { name: 'Chennai', lat: 13.0827, lon: 80.2707, x: 0, y: 0, z: 0 },
+  { name: 'Delhi', lat: 28.6139, lon: 77.2090, x: 0, y: 0, z: 0 },
+  { name: 'Ahmedabad', lat: 23.0225, lon: 72.5714, x: 0, y: 0, z: 0 },
 ];
 
 export default function GlowGlobe() {
